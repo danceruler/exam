@@ -338,7 +338,7 @@
                 var ss = now_stime.split(":")[1];
                 if (ss == "00" && hh == "00") {
                     //自动提交
-                    submitPapers();
+                    submit();
                     window.clearInterval(cal);
                     return;
                 }

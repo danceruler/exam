@@ -21,10 +21,11 @@
                 <span class="btn btn-primary pull-right gotest" onclick="toExam(this)">继续答题</span>
             </div>
         }
+        <div>时间：@Model[i].starttime.Value.ToString("yyyy-MM-dd HH:mm:ss")</div>
     }
 
 </div>
-<div style="width:100%;text-align:center;margin-top:10px">
+<div style="width:100%;text-align:center;margin-top:10px;height:50px">
     <div class="btn-group" role="group" aria-label="...">
         @if (ViewBag.NowPage == 1)
         {

@@ -187,20 +187,20 @@
 
         <div id="all_question">
             @*<div class="question" id="q05">
-            <div class="que_text"><span id="count">05</span>、试用期满，员工因个人原因提出辞职的，必须提前（ ）向公司提出申请，员工申请辞职以公司收到单据的日期为准。其工作交接时，由相关部门进行离职审计后方可离职。</div>
-            <div class="radio-primary">
-                <input type="radio" name="q05" id="q05_1">
-                <label for="q05_1">A、30天</label>
-            </div>
-            <div class="radio-primary">
-                <input type="radio" name="q05" id="q05_2">
-                <label for="q05_2">B、20天</label>
-            </div>
-            <div class="radio-primary">
-                <input type="radio" name="q05" id="q05_3">
-                <label for="q05_3">C、25天</label>
-            </div>
-        </div>*@
+                    <div class="que_text"><span id="count">05</span>、试用期满，员工因个人原因提出辞职的，必须提前（ ）向公司提出申请，员工申请辞职以公司收到单据的日期为准。其工作交接时，由相关部门进行离职审计后方可离职。</div>
+                    <div class="radio-primary">
+                        <input type="radio" name="q05" id="q05_1">
+                        <label for="q05_1">A、30天</label>
+                    </div>
+                    <div class="radio-primary">
+                        <input type="radio" name="q05" id="q05_2">
+                        <label for="q05_2">B、20天</label>
+                    </div>
+                    <div class="radio-primary">
+                        <input type="radio" name="q05" id="q05_3">
+                        <label for="q05_3">C、25天</label>
+                    </div>
+                </div>*@
             @foreach (FP_Exam_ExamResultTopic key in questionDic.Keys)
             {
                 cnd = 1;
@@ -230,7 +230,20 @@
                             cnd++;
                         }
                     </div>
-                    <div>答案：@question.Answer </div>
+                    <div style="display:inline-block">
+                        @{
+                            byte[] btNumber2 = new byte[] { (byte)(64 + question.now_option) };
+                            if (question.Answer == new ASCIIEncoding().GetString(btNumber2))
+                            {
+                                <img src="~/Imgs/img/right.png" style="width:20px">
+                            }
+                            else
+                            {
+                                <img src="~/Imgs/img/wrong.png" style="width:20px">
+                            }
+                        }
+                        <div style="display:inline-block">答案：@question.Answer </div>
+                    </div>
                 }
             }
 
@@ -318,7 +331,7 @@
                 e.stopPropagation()
             })
 
-            
+
         });
 
         function exit() {
@@ -335,7 +348,7 @@
                 }
             });
         }
-        
+
 
         //公共提示框
         function myalert(str) {
