@@ -1,0 +1,173 @@
+﻿@model FP_entity.FP_Exam_ExamInfo
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>考试信息</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/css/zui.min.css">
+    <link href="~/Content/dialog/dialog.css" rel="stylesheet" />
+    <link href="~/Content/dialog/myDialog.css" rel="stylesheet" />
+    <style>
+        * {
+            outline: none !important;
+        }
+
+        header {
+            position: fixed;
+            z-index: 99;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+            font-weight: bold;
+            background-color: white;
+            box-shadow: 0px 0px 18px 0px rgba(96, 96, 96, 0.15);
+        }
+
+        .backbox {
+            position: absolute;
+            width: 36px;
+            transform: translate( 0, -50% );
+            top: 50%;
+            padding: 10px;
+            padding-left: 15px;
+            box-sizing: border-box;
+        }
+
+        .list {
+            padding-top: 20px;
+        }
+
+            .list h5 {
+                margin: 0;
+                font-weight: bold;
+            }
+
+        .item {
+            overflow: hidden;
+            line-height: 34px;
+            padding-top: 10px;
+            padding-bottom: 0px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .start {
+            margin-top: 30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .mDialogs {
+            display: inline-block;
+            padding: 0 20px;
+            text-decoration: none;
+            outline: none;
+            margin: 20px 10px;
+            background: #222;
+            color: #fff;
+            line-height: 40px;
+            text-align: center
+        }
+
+        .dialog_load2.c_alert_wrap {
+            background: none;
+            box-shadow: none
+        }
+
+        .dialog_load.c_alert_wrap {
+            background: none;
+        }
+
+        .dialog_load .c_alert_con {
+            background: rgba(0,0,0,.7);
+            padding: 24px 25px
+        }
+
+        .c_alert_con img {
+            vertical-align: top
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="mark"><img class="dialogimg" src="~/Imgs/dialog/load3.gif" width="48" /></div>
+    <input style="display:none" id="examid" value="@Model.id" />
+    <input style="display:none" id="channalid" value="@ViewBag.channalid" />
+    <div class="container-fluid">
+        <header>
+            <div class="backbox" id="goback">
+                <i class="icon icon-chevron-left"></i>
+            </div>
+            考试信息
+        </header>
+        <div style="margin-top: 50px"></div>
+        <div class="item">
+            <b>考试项目：</b>
+            <span>@Model.name</span>
+        </div>
+        <div class="item">
+            <b>考生姓名：</b>
+            <span>@ViewBag.username</span>
+        </div>
+        <div class="item">
+            <b>考试时间：</b>
+            <span>@Model.examtime 分钟</span>
+        </div>
+        <div class="item">
+            <b>试卷总分：</b>
+            <span>@Model.total 分</span>
+        </div>
+        <button class="btn btn-primary btn-block start" onclick="startExam()">开始考试</button>
+
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/lib/jquery/jquery.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/js/zui.min.js"></script>
+    <script src="~/Scripts/dialog/mDialog.js"></script>
+    <script src="~/Scripts/dialog/mDialogMin.js"></script>
+    <script src="~/Scripts/js/const.js"></script>
+    <!-- <script src="js/phone_rem.js"></script> -->
+    <script>
+        var lodingdialog = null;
+        $(function () {
+            $(goback).click(() => {
+                window.location.href = domainPath + "/Exam/ExamList?channal=" + document.getElementById('channalid').value;
+            })
+            //myalert("test");
+        })
+
+        function startExam() {
+            myalert("");
+            var examid = document.getElementById("examid").value;
+            $.ajax({
+                type: 'post',
+                url: '/Exam/checkExamExist?examid=' + examid,
+                async: false,
+                success: function (result) {
+                    window.location.href = result.url;
+                }
+            });
+        }
+
+        //公共提示框
+        function myalert(str) {
+            var div = '<div class="mark"><img class="dialogimg" src="/Imgs/dialog/load3.gif" width="48"/></div>';
+            $('body').append(div)
+            //$('.mark').html(str);
+            $('.mark').show();
+            setTimeout(function () {
+                $('.mark').hide();
+                $('.mark').remove();
+            }, 2000)
+        }
+    </script>
+</body>

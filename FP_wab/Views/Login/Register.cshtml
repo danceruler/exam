@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>注册</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/css/zui.min.css">
+    <link href="~/Content/dialog/dialog.css" rel="stylesheet" />
+    <style>
+        * {
+            outline: none !important;
+        }
+
+        header {
+            position: fixed;
+            z-index: 99;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+            font-weight: bold;
+            background-color: white;
+            box-shadow: 0px 0px 18px 0px rgba(96, 96, 96, 0.15);
+        }
+
+        .backbox {
+            position: absolute;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .icon-chevron-left {
+            font-size: 18px;
+            line-height: 50px;
+        }
+
+        .form_box {
+            margin-top: 140px;
+        }
+
+        .login {
+            margin-bottom: 15px;
+        }
+
+        #forget {
+            color: #5bc0de;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="container-fluid">
+        <header>
+            @*<div class="backbox" id="goback">
+                    <i class="icon icon-chevron-left"></i>
+                </div>*@
+            账号注册
+        </header>
+        <form class="form-inline form_box">
+            <div class="form-group">
+                <label class="sr-only">账号*</label>
+                <input type="text" class="form-control" placeholder="账号" id="username">
+            </div>
+            <div class="form-group">
+                <label class="sr-only">密码*</label>
+                <input type="password" class="form-control" placeholder="密码" id="password1">
+            </div>
+            <div class="form-group">
+                <label class="sr-only">确认密码*</label>
+                <input type="password" class="form-control" placeholder="确认密码" id="password2">
+            </div>
+            <div class="form-group">
+                <label class="sr-only">真实姓名</label>
+                <input type="text" class="form-control" placeholder="真实姓名" id="truename">
+            </div>
+            <div class="form-group">
+                <label class="sr-only">手机号码*</label>
+                <input type="text" class="form-control" placeholder="手机号码" id="phonenumber">
+            </div>
+            <div class="form-group">
+                <label class="sr-only">电子邮箱*</label>
+                <input type="email" class="form-control" placeholder="电子邮箱" id="email">
+            </div>
+
+
+            <div class="clearfix"></div>
+            <button type="button" class="btn btn-primary btn-block login" id="register">注册</button>
+            <button type="button" class="btn btn-block" id="login">已有账号？立即登录</button>
+        </form>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/lib/jquery/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/js/zui.min.js"></script>
+    <script src="~/Scripts/dialog/mDialog.js"></script>
+    <script src="~/Scripts/dialog/mDialogMin.js"></script>
+    <script src="~/Scripts/js/const.js"></script>
+    <!-- <script src="js/phone_rem.js"></script> -->
+    <script>
+        $(function () {
+
+            $("#login").click(function () {
+                window.location.href = domainPath+"/Login/Index"
+            })
+
+            //$(goback).click(()=>{
+            //    window.history.back(-1);
+            //})
+            $("#register").click(function () {
+                var username = document.getElementById('username').value;
+                var password1 = document.getElementById('password1').value;
+                var password2 = document.getElementById('password2').value;
+                var truename = document.getElementById('truename').value;
+                var phonenumber = document.getElementById('phonenumber').value;
+                var email = document.getElementById('email').value;
+                if (username == "") {
+                    Dialog.init("用户名不能为空", 1500);
+                    return;
+                }
+                if (password1 != password2) {
+                    Dialog.init("两次密码不一致", 1500);
+                    return;
+                }
+                if (password1 == "") {
+                    Dialog.init("密码不能为空", 1500);
+                    return;
+                }
+                if (phonenumber == "") {
+                    Dialog.init("手机号不能为空", 1500);
+                    return;
+                }
+                if (email == "") {
+                    Dialog.init("邮箱不能为空", 1500);
+                    return;
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '/Login/CreateUser',
+                    data: { username: username, password: password1, truename: truename, phonenumber: phonenumber, email: email },
+                    success: function (result) {
+                        if (result.Status == 1) {
+                            window.location.href = domainPath + "/Announce/Index?content=" + result.Content + "&buttonContent=返回登录页&type=2&backUrl=" + domainPath + "/Login/Index";
+                        } else {
+                            Dialog.init(result.Content, 3000);
+                        }
+                    }
+                });
+
+            })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        })
+    </script>
+</body>
+</html>

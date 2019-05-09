@@ -1,0 +1,61 @@
+﻿@model List<FP_entity.FP_Exam_ExamResult>
+
+@{
+    ViewBag.Title = "ExamHistoryList";
+}
+<div class="list">
+    <h5>考试列表</h5>
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        if (Model[i].status == 1)
+        {
+            <div class="item" id="@Model[i].id">
+                <a onclick="toAnalysis(this)">@Model[i].examname (得分:@Model[i].score)</a>
+                <span class="btn btn-primary pull-right gotest" onclick="toAnalysis(this)">答案解析</span>
+            </div>
+        }
+        else
+        {
+            <div class="item" id="@Model[i].id">
+                <a onclick="toExam(this)">@Model[i].examname (未完成)</a>
+                <span class="btn btn-primary pull-right gotest" onclick="toExam(this)">继续答题</span>
+            </div>
+        }
+    }
+
+</div>
+<div style="width:100%;text-align:center;margin-top:10px">
+    <div class="btn-group" role="group" aria-label="...">
+        @if (ViewBag.NowPage == 1)
+        {
+            <button type="button" class="btn btn-default" disabled>上一页</button>
+        }
+        else
+        {
+            <button type="button" class="btn btn-default" onclick="last()">上一页</button>
+        }
+        @for (int i = (ViewBag.NowPage - 2); i <= (ViewBag.NowPage + 2); i++)
+        {
+            if (i >= 1 && i <= ViewBag.PageSum)
+            {
+                if (i == ViewBag.NowPage)
+                {
+                    <button type="button" style="width:auto" class="btn btn-default" disabled>@i</button>
+                }
+                else
+                {
+                    <button type="button" style="width:auto" class="btn btn-default" onclick="turntopage(@i)">@i</button>
+                }
+
+            }
+        }
+        @if (ViewBag.NowPage == ViewBag.PageSum)
+        {
+            <button type="button" class="btn btn-default" disabled>下一页</button>
+        }
+        else
+        {
+            <button type="button" class="btn btn-default" onclick="next()">下一页</button>
+        }
+    </div>
+</div>

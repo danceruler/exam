@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a onclick="down()" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    var strRemoteURL = "http://www.mzhdemo.xyz:2001/UploadFile/1-20190508071418-杨逍红-文档汇编.docx";
+    var strLocalURL = "D://"
+
+    function down() {
+        var $eleForm = $("<form method='get'></form>");
+
+        $eleForm.attr("action", strRemoteURL);
+
+        $(document.body).append($eleForm);
+
+        //提交表单，实现下载
+        $eleForm.submit();
+    };
+
+    function DownURL() {
+        try {
+            var xmlHTTP = new ActiveXObject("Microsoft.XMLHTTP");
+            xmlHTTP.open("Get", strRemoteURL, false);
+            xmlHTTP.send();
+            var adodbStream = new ActiveXObject("ADODB.Stream");
+            adodbStream.Type = 1;//1=adTypeBinary
+            adodbStream.Open();
+            adodbStream.write(xmlHTTP.responseBody);
+            adodbStream.SaveToFile(strLocalURL, 2);
+            adodbStream.Close();
+            adodbStream = null;
+            xmlHTTP = null;
+        }
+        catch (e) {
+            window.confirm("下载URL出错!");
+        }
+        //window.confirm("下载完成.");
+    }
+</script>

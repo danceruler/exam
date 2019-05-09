@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>首页</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/css/zui.min.css">
+    <style>
+        * {
+            outline: none !important;
+        }
+
+        header {
+            font-size: 14px;
+            font-weight: bold;
+            color: #3280FC;
+            background: #fff;
+            line-height: 50px;
+            padding-left: 15px;
+            box-shadow: 0px 0px 18px 0px rgba(96, 96, 96, 0.15);
+        }
+
+        #user {
+            float: right;
+            overflow: hidden;
+            margin-right: 15px;
+            font-weight: normal;
+        }
+
+        #user_img {
+            width: 17px;
+            margin-top: 16px;
+            margin-right: 6px;
+        }
+
+        #user_name {
+            margin: 0;
+            color: #333;
+        }
+
+        .item {
+            line-height: 40px;
+            border-radius: 8px;
+            margin-top: 15px;
+            padding: 15px;
+            color: #fff;
+            background-image: -moz-linear-gradient( 90deg, rgb(28,98,209) 0%, rgb(81,148,255) 100%);
+            background-image: -webkit-linear-gradient( 90deg, rgb(28,98,209) 0%, rgb(81,148,255) 100%);
+            background-image: -ms-linear-gradient( 90deg, rgb(28,98,209) 0%, rgb(81,148,255) 100%);
+            box-shadow: 0px 0px 12px 0px rgba(96, 96, 96, 0.36);
+        }
+
+            .item span {
+                font-size: 16px;
+            }
+
+            .item small {
+                font-size: 10px;
+                color: #eee;
+                padding-left: 10px;
+            }
+
+        footer {
+            position: fixed;
+            right: 15px;
+            bottom: 15px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <header>
+        机友考试系统
+        <div id="user">
+            <p id="user_name" class="pull-right">@ViewBag.username</p>
+            @*<div id="user_img" class="pull-right"><img src="img/user.png" alt="" class="img-responsive"></div>*@
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="item" id="mock" onclick="inExamList(this)">
+            模拟考试
+            <small>提供历年考试的真题试卷</small>
+            <span class="pull-right"></span>
+        </div>
+        <div class="item" id="exam" onclick="inExamList(this)">
+            正式考试
+            <small>属于您自己的正式考试</small>
+            <span class="pull-right"></span>
+        </div>
+        <div class="item" id="history" onclick="inExamList(this)">
+            考试历史
+            <small>您的考试历史</small>
+            <span class="pull-right"></span>
+        </div>
+    </div>
+    <footer class="btn btn-danger " id="out" onclick="logout()">退出系统</footer>
+
+
+
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/lib/jquery/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/js/zui.min.js"></script>
+    <script src="~/Scripts/js/const.js"></script>
+    <!-- <script src="js/phone_rem.js"></script> -->
+    <script>
+        $(function () {
+
+            $("#zhuce").click(function () {
+                window.location.href = "zhuce.html"
+            })
+
+            //$(mock).on("click",()=>{
+            //    window.location.href = "mocktest.html"
+            //})
+
+            //$(test).on("click",()=>{
+            //    window.location.href = "test.html"
+            //})
+
+            //$(out).on("click",()=>{
+            //    logout();
+            //})
+        })
+
+        function inExamList(obj) {
+            if (obj.id == "mock") {
+                window.location.href = domainPath + "/Exam/ExamList?channal=2";
+            } else if (obj.id == "exam") {
+                window.location.href = domainPath + "/Exam/ExamList?channal=4";
+            } else {
+                window.location.href = domainPath + "/Exam/ExamHistory";
+            }
+        }
+
+        function logout() {
+            $.ajax({
+                type: 'post',
+                url: '/login/Logout',
+                success: function (result) {
+                    if (result.Status == 0) {
+                        alert("注销失败");
+                    } else {
+                        window.location.href = result.url;
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

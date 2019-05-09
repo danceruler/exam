@@ -1,0 +1,353 @@
+﻿@using FP_entity;
+@using System.Text;
+@using FP_wab.Controllers
+@{
+    Dictionary<FP_Exam_ExamResultTopic, List<AnalysisQuestionModel>> questionDic = ViewBag.questionDic as Dictionary<FP_Exam_ExamResultTopic, List<AnalysisQuestionModel>>;
+    var questionSum = 0;
+    var cnd = 1;
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>考试中</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/css/zui.min.css">
+    <link href="~/Content/dialog/dialog.css" rel="stylesheet" />
+    <link href="~/Content/dialog/myDialog.css" rel="stylesheet" />
+    <style>
+        * {
+            outline: none !important;
+        }
+
+        header {
+            position: fixed;
+            z-index: 99;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            font-size: 14px;
+            color: #333;
+            padding: 0 20px;
+            background-color: white;
+            box-shadow: 0px 0px 18px 0px rgba(96, 96, 96, 0.15);
+        }
+
+        #time {
+            color: #3280FC
+        }
+
+        .backbox {
+            position: absolute;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .icon-chevron-left {
+            font-size: 18px;
+            line-height: 50px;
+        }
+
+        .list {
+            padding-top: 20px;
+        }
+
+            .list h5 {
+                margin: 0;
+                font-weight: bold;
+            }
+
+        .item {
+            overflow: hidden;
+            line-height: 34px;
+            padding-top: 10px;
+            padding-bottom: 0px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .start {
+            margin-top: 30px;
+        }
+        /* label input[type='radio']{
+            top: 48%;
+            transform: translate(0,-50%)
+        } */
+        .question {
+            padding-top: 20px;
+        }
+
+        .que_text {
+            margin-bottom: 20px;
+            text-align: justify;
+            font-size: 16px;
+        }
+
+        .radio-primary {
+            margin-top: 5px;
+        }
+
+        #end {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+        }
+
+        #out {
+            position: fixed;
+            bottom: 15px;
+            right: 80px;
+        }
+
+        #link {
+            position: fixed;
+            bottom: 60px;
+            right: 15px;
+        }
+
+        .icon-th {
+            margin-right: 10px;
+        }
+
+        #all_link {
+            z-index: 9;
+            position: fixed;
+            right: 15px;
+            bottom: 95px;
+            padding: 10px;
+            width: 302px;
+            background: #eee;
+            border-radius: 8px;
+        }
+
+            #all_link a {
+                margin: 2px 2px;
+                padding-left: 4px;
+                padding-right: 4px;
+            }
+
+        #bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        .myoption {
+        }
+
+        /** {
+            margin: 0;
+            padding: 0;
+        }*/
+
+        .mDialogs {
+            display: inline-block;
+            padding: 0 20px;
+            text-decoration: none;
+            outline: none;
+            margin: 20px 10px;
+            background: #222;
+            color: #fff;
+            line-height: 40px;
+            text-align: center
+        }
+
+        .dialog_load2.c_alert_wrap {
+            background: none;
+            box-shadow: none
+        }
+
+        .dialog_load.c_alert_wrap {
+            background: none;
+        }
+
+        .dialog_load .c_alert_con {
+            background: rgba(0,0,0,.7);
+            padding: 24px 25px
+        }
+
+        .c_alert_con img {
+            vertical-align: top
+        }
+    </style>
+</head>
+
+
+<body>
+    <input id="resultid" value="@ViewBag.resultid" style="display:none" />
+    <input id="channalid" value="@ViewBag.channal" style="display:none" />
+    <div class="container-fluid">
+        <header>
+            <b class="pull-left">@ViewBag.examname</b>
+            <div class="clearfix"></div>
+        </header>
+        <div style="margin-top: 50px"></div>
+
+        <div id="all_question">
+            @*<div class="question" id="q05">
+            <div class="que_text"><span id="count">05</span>、试用期满，员工因个人原因提出辞职的，必须提前（ ）向公司提出申请，员工申请辞职以公司收到单据的日期为准。其工作交接时，由相关部门进行离职审计后方可离职。</div>
+            <div class="radio-primary">
+                <input type="radio" name="q05" id="q05_1">
+                <label for="q05_1">A、30天</label>
+            </div>
+            <div class="radio-primary">
+                <input type="radio" name="q05" id="q05_2">
+                <label for="q05_2">B、20天</label>
+            </div>
+            <div class="radio-primary">
+                <input type="radio" name="q05" id="q05_3">
+                <label for="q05_3">C、25天</label>
+            </div>
+        </div>*@
+            @foreach (FP_Exam_ExamResultTopic key in questionDic.Keys)
+            {
+                cnd = 1;
+                <h4 style="text-align:center;vertical-align:middle;padding-top:20px;">@key.title</h4>
+                foreach (AnalysisQuestionModel question in questionDic[key])
+                {
+                    questionSum++;
+                    <div class="question" id="q_@cnd">
+                        <div class="que_text"><span id="count">@cnd</span>.@question.Title</div>
+                        @for (int i = 0; i < question.options.Count(); i++)
+                        {
+                            ASCIIEncoding aSCIIEncoding = new ASCIIEncoding();
+                            byte[] btNumber = new byte[] { (byte)(i + 65) };
+                            <div class="radio-primary">
+                                @if ((i + 1) == question.now_option)
+                                {
+                                    <input class="myoption" type="radio" name="q_@cnd" id="q:@cnd:@aSCIIEncoding.GetString(btNumber):@question.Id:@key.id" checked disabled>
+                                }
+                                else
+                                {
+                                    <input class="myoption" type="radio" name="q_@cnd" id="q:@cnd:@aSCIIEncoding.GetString(btNumber):@question.Id:@key.id" disabled>
+                                }
+                                <label for="q:@cnd:@aSCIIEncoding.GetString(btNumber):@question.Id:@key.id">@aSCIIEncoding.GetString(btNumber):@question.options[i]</label>
+                            </div>
+                        }
+                        @{
+                            cnd++;
+                        }
+                    </div>
+                    <div>答案：@question.Answer </div>
+                }
+            }
+
+        </div>
+
+        <footer>
+            <div id="link" class="btn btn-primary">
+                <i class="icon icon-th"></i>
+                <span id="answeredsum">@ViewBag.answeredSum</span>/@questionSum
+                <div id="bg" class="hide">
+                    <div id="all_link">
+                        @{cnd = 1;}
+                        @foreach (FP_Exam_ExamResultTopic key in questionDic.Keys)
+                        {
+                            for (int i = 1; i <= questionDic[key].Count(); i++)
+                            {
+                                if (i < 10)
+                                {
+                                    var t = "0" + i;
+                                    if (questionDic[key][i - 1].now_option != 0)
+                                    {
+                                        byte[] btNumber = new byte[] { (byte)(64 + questionDic[key][i - 1].now_option) };
+                                        if (questionDic[key][i - 1].Answer == new ASCIIEncoding().GetString(btNumber))
+                                        {
+                                            <a href="#q_@cnd" id="thum_@questionDic[key][i-1].Id" class="pull-left btn btn-sm btn-success">@t</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="#q_@cnd" id="thum_@questionDic[key][i-1].Id" class="pull-left btn btn-sm btn-danger">@t</a>
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <a href="#q_@cnd" id="thum_@questionDic[key][i-1].Id" class="pull-left btn btn-sm">@t</a>
+                                    }
+
+                                }
+                                else
+                                {
+                                    if (questionDic[key][i - 1].now_option != 0)
+                                    {
+                                        byte[] btNumber = new byte[] { (byte)(64 + questionDic[key][i - 1].now_option) };
+                                        if (questionDic[key][i - 1].Answer == new ASCIIEncoding().GetString(btNumber))
+                                        {
+                                            <a href="#q_@cnd" id="thum_@questionDic[key][i-1].Id" class="pull-left btn btn-sm btn-success">@i</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="#q_@cnd" id="thum_@questionDic[key][i-1].Id" class="pull-left btn btn-sm btn-danger">@i</a>
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <a href="#q_@cnd" id="thum_@questionDic[key][i-1].Id" class="pull-left btn btn-sm">@i</a>
+                                    }
+
+                                }
+                                cnd++;
+                            }
+
+                        }
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="end" class="btn btn-success" onclick="exit()">退出</div>
+        </footer>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/lib/jquery/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/js/zui.min.js"></script>
+    <script src="~/Scripts/dialog/mDialog.js"></script>
+    <script src="~/Scripts/dialog/mDialogMin.js"></script>
+    <script src="~/Scripts/js/const.js"></script>
+    <!-- <script src="js/phone_rem.js"></script> -->
+    <script>
+        $(function () {
+            $(link).on('click', function () {
+                $(bg).toggle(200)
+            })
+
+            $("#all_link a").on('click', (e) => {
+                e.stopPropagation()
+            })
+
+            
+        });
+
+        function exit() {
+            Dialog.init('', {
+                title: '确认退出?',
+                button: {
+                    确定: function () {
+                        //window.location.href = domainPath + "/Exam/Examlist?channal=" + document.getElementById('channalid').value;
+                        window.location.href = domainPath + "/Exam/Index";
+                    },
+                    返回: function () {
+                        Dialog.close(this);
+                    }
+                }
+            });
+        }
+        
+
+        //公共提示框
+        function myalert(str) {
+            var div = '<div class="mark"><img class="dialogimg" src="/Imgs/dialog/load3.gif" width="48"/></div>';
+            $('body').append(div)
+            //$('.mark').html(str);
+            $('.mark').show();
+            setTimeout(function () {
+                $('.mark').hide();
+                $('.mark').remove();
+            }, 2000)
+        }
+
+    </script>
+</body>

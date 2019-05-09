@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E3033B8-BB92-45EC-9A1A-7170A65DC219}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FP_entity</RootNamespace>
+    <AssemblyName>FP_entity</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="FP_Course_ChapterInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_Course_CourseInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_Course_VideoInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_entity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FP_entity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_entity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_entity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FP_entity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="FP_Exam_ExamInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_Exam_ExamLogInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_Exam_ExamNote.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_Exam_ExamQuestion.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_Exam_ExamResult.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_Exam_ExamResultTopic.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_Exam_ExamSignInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_Exam_ExamTopic.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_Exam_ExpInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_Exam_SortQuestion.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_Exam_TestInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_Exam_TestResult.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_AttachInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_AttachType.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_CacheInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_ChannelInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_CreditInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_Department.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_DesktopInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_GradeInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_MenuInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_MsgTempInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_Permission.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_RoleInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_SessionInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_SortAppInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_SortInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_SysLogInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_TaskInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_TypeInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FP_WMS_UserInfo.cs">
+      <DependentUpon>FP_entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="FP_entity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FP_entity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="FP_entity.edmx.diagram">
+      <DependentUpon>FP_entity.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FP_entity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FP_entity.Context.cs</LastGenOutput>
+      <DependentUpon>FP_entity.edmx</DependentUpon>
+    </Content>
+    <Content Include="FP_entity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FP_entity.edmx</DependentUpon>
+      <LastGenOutput>FP_entity.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

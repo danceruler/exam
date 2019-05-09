@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>登录</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/css/zui.min.css">
+    <link href="~/Content/dialog/dialog.css" rel="stylesheet" />
+    <style>
+        * {
+            outline: none !important;
+        }
+
+        .logo_ {
+            margin: 80px auto;
+            width: 70px;
+        }
+
+            .logo_ h5 {
+                color: #3280FC;
+            }
+
+        .login {
+            margin-bottom: 15px;
+        }
+
+        #forget {
+            color: #3280FC;
+            padding-bottom: 15px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <input style="display:none" id="backurl" value="@ViewBag.backUrl">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="logo_ text-center">
+                <img src="~/Imgs/img/logo.png" alt="" class="img-responsive">
+                <h5>考试系统</h5>
+            </div>
+        </div>
+
+        <form class="form-inline">
+            <div class="form-group">
+                <label class="sr-only" for="exampleInputEmail3">账号</label>
+                <input type="text" class="form-control" id="exampleInputEmail3" placeholder="账号">
+            </div>
+            <div>
+                <label class="sr-only" for="exampleInputPassword3">密码</label>
+                <input type="password" class="form-control" id="exampleInputPassword3" placeholder="密码">
+            </div>
+            <div class="checkbox pull-right">
+                <label id="forget">@*忘记密码*@</label>
+            </div>
+            <div class="clearfix"></div>
+            <button type="button" class="btn btn-primary btn-block login">登录</button>
+            <button type="button" class="btn btn-block" id="register">没有账号？免费注册</button>
+        </form>
+
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/lib/jquery/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.0/js/zui.min.js"></script>
+    <script src="~/Scripts/dialog/mDialog.js"></script>
+    <script src="~/Scripts/dialog/mDialogMin.js"></script>
+    <script src="~/Scripts/js/const.js"></script>
+    <script>
+        $(function () {
+
+            $("#register").click(function () {
+                window.location.href = domainPath + "/Login/Register";
+            })
+
+            $(".login").on("click", () => {
+                //window.location.href = "home.html"
+                login();
+            })
+
+            //$(forget).click(()=>{
+            //    window.location.href = "forget.html"
+            //})
+        })
+
+        function login() {
+            var username = document.getElementById('exampleInputEmail3').value;
+            var password = document.getElementById('exampleInputPassword3').value;
+            if (username == "") {
+                Dialog.init("用户名不能为空", 1500);
+                return;
+            }
+            if (password == "") {
+                Dialog.init("密码不能为空", 1500);
+                return;
+            }
+            $.ajax({
+                type: 'post',
+                url: '/Login/CheckLogin',
+                data: { username: username, password: password, callbackurl: document.getElementById("backurl").value },
+                success: function (result) {
+                    if (result.Status == 1) {
+                        window.location.href = result.backurl;
+                    } else {
+                        Dialog.init(result.Content, 2000);
+                    }
+                }
+            });
+        }
+
+
+    </script>
+</body>
+</html>

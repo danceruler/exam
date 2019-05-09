@@ -1,0 +1,2047 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FP_ExamModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FP_Course_ChapterInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="courseid" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="150" />
+          <Property Name="videos" Type="int" />
+          <Property Name="display" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_Course_CourseInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uid" Type="int" />
+          <Property Name="channelid" Type="int" />
+          <Property Name="sortid" Type="int" />
+          <Property Name="typelist" Type="nvarchar" MaxLength="250" />
+          <Property Name="teacherid" Type="nvarchar" MaxLength="250" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+          <Property Name="price" Type="float" />
+          <Property Name="old_price" Type="float" />
+          <Property Name="memberpice" Type="float" />
+          <Property Name="content" Type="ntext" />
+          <Property Name="img" Type="nvarchar" MaxLength="250" />
+          <Property Name="attachid" Type="nvarchar" MaxLength="60" />
+          <Property Name="istop" Type="int" />
+          <Property Name="learns" Type="int" />
+          <Property Name="buys" Type="nvarchar" MaxLength="250" />
+          <Property Name="views" Type="int" />
+          <Property Name="postdatetime" Type="datetime" />
+          <Property Name="favorites" Type="nvarchar" MaxLength="250" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_Course_VideoInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="courseid" Type="int" />
+          <Property Name="chapterid" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+          <Property Name="videofile" Type="nvarchar" MaxLength="250" />
+          <Property Name="img" Type="nvarchar" MaxLength="250" />
+          <Property Name="videotime" Type="int" />
+          <Property Name="attachid" Type="nvarchar" MaxLength="150" />
+          <Property Name="postdatetime" Type="datetime" />
+          <Property Name="display" Type="int" />
+          <Property Name="studys" Type="ntext" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="departid" Type="int" />
+          <Property Name="uid" Type="int" />
+          <Property Name="channelid" Type="int" />
+          <Property Name="sortid" Type="int" />
+          <Property Name="typelist" Type="nvarchar" MaxLength="255" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="type" Type="int" />
+          <Property Name="total" Type="float" />
+          <Property Name="passmark" Type="float" />
+          <Property Name="examtime" Type="int" />
+          <Property Name="islimit" Type="int" />
+          <Property Name="starttime" Type="datetime" />
+          <Property Name="endtime" Type="datetime" />
+          <Property Name="repeats" Type="int" />
+          <Property Name="showanswer" Type="int" />
+          <Property Name="allowdelete" Type="int" />
+          <Property Name="display" Type="int" />
+          <Property Name="postdatetime" Type="datetime" />
+          <Property Name="examtype" Type="int" />
+          <Property Name="examroles" Type="nvarchar" MaxLength="2000" />
+          <Property Name="examdeparts" Type="nvarchar" MaxLength="2000" />
+          <Property Name="examuser" Type="nvarchar" MaxLength="2000" />
+          <Property Name="credits" Type="int" />
+          <Property Name="exams" Type="int" />
+          <Property Name="score" Type="float" />
+          <Property Name="views" Type="int" />
+          <Property Name="questions" Type="int" />
+          <Property Name="status" Type="int" />
+          <Property Name="papers" Type="int" />
+          <Property Name="title" Type="nvarchar" MaxLength="200" />
+          <Property Name="address" Type="nvarchar" MaxLength="250" />
+          <Property Name="opentime" Type="nvarchar" MaxLength="100" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" />
+          <Property Name="content" Type="ntext" />
+          <Property Name="iscopy" Type="int" />
+          <Property Name="isvideo" Type="int" />
+          <Property Name="iswitch" Type="int" />
+          <Property Name="issign" Type="int" />
+          <Property Name="client" Type="nvarchar" MaxLength="150" />
+          <Property Name="papertype" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamLogInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sortid" Type="int" />
+          <Property Name="uid" Type="int" />
+          <Property Name="channelid" Type="int" />
+          <Property Name="answers" Type="int" />
+          <Property Name="qidlist" Type="ntext" />
+          <Property Name="answerlist" Type="ntext" />
+          <Property Name="scorelist" Type="ntext" />
+          <Property Name="wrongs" Type="int" />
+          <Property Name="curwrongs" Type="int" />
+          <Property Name="wronglist" Type="ntext" />
+          <Property Name="notes" Type="int" />
+          <Property Name="curnotes" Type="int" />
+          <Property Name="notelist" Type="ntext" />
+          <Property Name="favs" Type="int" />
+          <Property Name="curfavs" Type="int" />
+          <Property Name="favlist" Type="ntext" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamNote">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="qid" Type="int" />
+          <Property Name="uid" Type="int" />
+          <Property Name="note" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamQuestion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kid" Type="nvarchar" MaxLength="150" />
+          <Property Name="parentid" Type="nvarchar" MaxLength="150" />
+          <Property Name="uid" Type="int" />
+          <Property Name="channelid" Type="int" />
+          <Property Name="sortid" Type="int" />
+          <Property Name="typelist" Type="nvarchar" MaxLength="250" />
+          <Property Name="type" Type="nvarchar" MaxLength="60" />
+          <Property Name="display" Type="int" />
+          <Property Name="title" Type="ntext" />
+          <Property Name="content" Type="ntext" />
+          <Property Name="answer" Type="ntext" />
+          <Property Name="upperflg" Type="int" />
+          <Property Name="orderflg" Type="int" />
+          <Property Name="answerkey" Type="nvarchar" MaxLength="200" />
+          <Property Name="ascount" Type="int" />
+          <Property Name="explain" Type="ntext" />
+          <Property Name="difficulty" Type="int" />
+          <Property Name="postdatetime" Type="datetime" />
+          <Property Name="attachid" Type="nvarchar" MaxLength="100" />
+          <Property Name="exams" Type="int" />
+          <Property Name="wrongs" Type="int" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamResult">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="departid" Type="int" />
+          <Property Name="uid" Type="int" />
+          <Property Name="channelid" Type="int" />
+          <Property Name="sortid" Type="int" />
+          <Property Name="examid" Type="int" />
+          <Property Name="examname" Type="nvarchar" MaxLength="100" />
+          <Property Name="examtime" Type="int" />
+          <Property Name="examtype" Type="int" />
+          <Property Name="showanswer" Type="int" />
+          <Property Name="allowdelete" Type="int" />
+          <Property Name="total" Type="float" />
+          <Property Name="passmark" Type="float" />
+          <Property Name="score1" Type="float" />
+          <Property Name="score2" Type="float" />
+          <Property Name="score" Type="float" />
+          <Property Name="utime" Type="int" />
+          <Property Name="islimit" Type="int" />
+          <Property Name="starttime" Type="datetime" />
+          <Property Name="endtime" Type="datetime" />
+          <Property Name="examdatetime" Type="datetime" />
+          <Property Name="credits" Type="int" />
+          <Property Name="questions" Type="int" />
+          <Property Name="wrongs" Type="int" />
+          <Property Name="unanswer" Type="int" />
+          <Property Name="exp" Type="int" />
+          <Property Name="getcredits" Type="int" />
+          <Property Name="exnote" Type="nvarchar" MaxLength="200" />
+          <Property Name="attachid" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="int" />
+          <Property Name="paper" Type="int" />
+          <Property Name="ip" Type="nvarchar" MaxLength="30" />
+          <Property Name="mac" Type="nvarchar" MaxLength="50" />
+          <Property Name="isvideo" Type="int" />
+          <Property Name="client" Type="nvarchar" MaxLength="60" />
+          <Property Name="papertype" Type="int" />
+          <Property Name="title" Type="nvarchar" MaxLength="250" />
+          <Property Name="address" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamResultTopic">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="resultid" Type="int" />
+          <Property Name="type" Type="nvarchar" MaxLength="60" />
+          <Property Name="title" Type="nvarchar" MaxLength="100" />
+          <Property Name="display" Type="int" />
+          <Property Name="perscore" Type="float" />
+          <Property Name="score" Type="float" />
+          <Property Name="questions" Type="int" />
+          <Property Name="wrongs" Type="int" />
+          <Property Name="questionlist" Type="ntext" />
+          <Property Name="answerlist" Type="ntext" />
+          <Property Name="scorelist" Type="ntext" />
+          <Property Name="correctlist" Type="ntext" />
+          <Property Name="paper" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamSignInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ikey" Type="nvarchar" MaxLength="120" />
+          <Property Name="examid" Type="int" />
+          <Property Name="uid" Type="int" />
+          <Property Name="signer" Type="nvarchar" MaxLength="800" />
+          <Property Name="img" Type="nvarchar" MaxLength="200" />
+          <Property Name="payimg" Type="nvarchar" MaxLength="200" />
+          <Property Name="attachid" Type="nvarchar" MaxLength="100" />
+          <Property Name="reason" Type="nvarchar" MaxLength="500" />
+          <Property Name="postdatetime" Type="datetime" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamTopic">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="examid" Type="int" />
+          <Property Name="type" Type="nvarchar" MaxLength="60" />
+          <Property Name="title" Type="nvarchar" MaxLength="100" />
+          <Property Name="display" Type="int" />
+          <Property Name="questions" Type="int" />
+          <Property Name="curquestions" Type="int" />
+          <Property Name="questionlist" Type="nvarchar" MaxLength="2000" />
+          <Property Name="perscore" Type="float" />
+          <Property Name="randomsort" Type="ntext" />
+          <Property Name="randomcount" Type="ntext" />
+          <Property Name="randoms" Type="int" />
+          <Property Name="paper" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExpInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="examid" Type="int" />
+          <Property Name="scorelower" Type="int" />
+          <Property Name="scoreupper" Type="int" />
+          <Property Name="exp" Type="int" />
+          <Property Name="credits" Type="int" />
+          <Property Name="comment" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="FP_Exam_SortQuestion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="channelid" Type="int" />
+          <Property Name="sortid" Type="int" />
+          <Property Name="type" Type="nvarchar" MaxLength="100" />
+          <Property Name="typeid" Type="int" />
+          <Property Name="counts" Type="int" />
+          <Property Name="questionlist" Type="ntext" />
+        </EntityType>
+        <EntityType Name="FP_Exam_TestInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uid" Type="int" />
+          <Property Name="channelid" Type="int" />
+          <Property Name="sortid" Type="int" />
+          <Property Name="typelist" Type="nvarchar" MaxLength="250" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+          <Property Name="repeats" Type="int" />
+          <Property Name="client" Type="nvarchar" MaxLength="60" />
+          <Property Name="flag_roles" Type="nvarchar" MaxLength="250" />
+          <Property Name="flag_departs" Type="nvarchar" MaxLength="250" />
+          <Property Name="flag_users" Type="nvarchar" MaxLength="250" />
+          <Property Name="questions" Type="nvarchar" MaxLength="250" />
+          <Property Name="sorts" Type="nvarchar" MaxLength="250" />
+          <Property Name="counts" Type="int" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_Exam_TestResult">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="uid" Type="int" />
+          <Property Name="testid" Type="int" />
+          <Property Name="total" Type="int" />
+          <Property Name="wrong" Type="int" />
+          <Property Name="ip" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="FP_WMS_AttachInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="attachid" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentid" Type="int" />
+          <Property Name="platform" Type="nvarchar" MaxLength="150" />
+          <Property Name="app" Type="nvarchar" MaxLength="50" />
+          <Property Name="postid" Type="int" />
+          <Property Name="uid" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+          <Property Name="filename" Type="nvarchar" MaxLength="200" />
+          <Property Name="filetype" Type="nvarchar" MaxLength="100" />
+          <Property Name="filesize" Type="int" />
+          <Property Name="description" Type="nvarchar" MaxLength="200" />
+          <Property Name="uploadtime" Type="datetime" />
+          <Property Name="downloads" Type="int" />
+          <Property Name="reads" Type="int" />
+          <Property Name="issync" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_WMS_AttachType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="extension" Type="nvarchar" MaxLength="10" />
+          <Property Name="maxsize" Type="int" />
+          <Property Name="type" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="FP_WMS_CacheInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="key" Type="nvarchar" MaxLength="50" />
+          <Property Name="expires" Type="int" />
+          <Property Name="cachedatetime" Type="datetime" />
+          <Property Name="file" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="FP_WMS_ChannelInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="display" Type="int" />
+          <Property Name="markup" Type="nvarchar" MaxLength="20" />
+          <Property Name="sortapps" Type="nvarchar" MaxLength="250" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="FP_WMS_CreditInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uid" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="type" Type="int" />
+          <Property Name="credits" Type="int" />
+          <Property Name="postdatetime" Type="datetime" />
+          <Property Name="doid" Type="int" />
+          <Property Name="doname" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="FP_WMS_Department">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="keyid" Type="nvarchar" MaxLength="100" />
+          <Property Name="parentid" Type="int" />
+          <Property Name="parentlist" Type="nvarchar" MaxLength="200" />
+          <Property Name="departlist" Type="nvarchar" MaxLength="250" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="longname" Type="nvarchar" MaxLength="250" />
+          <Property Name="shortname" Type="nvarchar" MaxLength="100" />
+          <Property Name="markup" Type="nvarchar" MaxLength="100" />
+          <Property Name="types" Type="nvarchar" MaxLength="150" />
+          <Property Name="manager" Type="nvarchar" MaxLength="250" />
+          <Property Name="departer" Type="nvarchar" MaxLength="250" />
+          <Property Name="usercount" Type="int" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" />
+          <Property Name="display" Type="int" />
+          <Property Name="subcounts" Type="int" />
+          <Property Name="posts" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_WMS_DesktopInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uid" Type="int" />
+          <Property Name="app" Type="nvarchar" MaxLength="50" />
+          <Property Name="parentid" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="markup" Type="nvarchar" MaxLength="60" />
+          <Property Name="platform" Type="nvarchar" MaxLength="100" />
+          <Property Name="description" Type="nvarchar" MaxLength="200" />
+          <Property Name="icon" Type="nvarchar" MaxLength="200" />
+          <Property Name="attach_icon" Type="nvarchar" MaxLength="100" />
+          <Property Name="url" Type="nvarchar" MaxLength="200" />
+          <Property Name="target" Type="nvarchar" MaxLength="20" />
+          <Property Name="desk" Type="int" />
+          <Property Name="width" Type="int" />
+          <Property Name="height" Type="int" />
+          <Property Name="hidden" Type="int" />
+          <Property Name="display" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_WMS_GradeInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" />
+          <Property Name="description" Type="nvarchar" MaxLength="200" />
+          <Property Name="departid" Type="nvarchar" MaxLength="250" />
+          <Property Name="display" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_WMS_MenuInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parentid" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="platform" Type="nvarchar" MaxLength="100" />
+          <Property Name="lefturl" Type="nvarchar" MaxLength="200" />
+          <Property Name="righturl" Type="nvarchar" MaxLength="200" />
+          <Property Name="display" Type="int" />
+          <Property Name="hidden" Type="int" />
+          <Property Name="system" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_WMS_MsgTempInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="markup" Type="nvarchar" MaxLength="20" />
+          <Property Name="subject" Type="nvarchar" MaxLength="50" />
+          <Property Name="content" Type="ntext" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_WMS_Permission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="flagpage" Type="ntext" />
+          <Property Name="isadd" Type="int" />
+          <Property Name="isupdate" Type="int" />
+          <Property Name="isdelete" Type="int" />
+          <Property Name="isaudit" Type="int" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_WMS_RoleInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="60" />
+          <Property Name="markup" Type="nvarchar" MaxLength="60" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" />
+          <Property Name="desktopurl" Type="nvarchar" MaxLength="100" />
+          <Property Name="sorts" Type="nvarchar" MaxLength="2500" />
+          <Property Name="menus" Type="nvarchar" MaxLength="250" />
+          <Property Name="desktop" Type="nvarchar" MaxLength="2500" />
+          <Property Name="permission" Type="nvarchar" MaxLength="250" />
+          <Property Name="isadmin" Type="int" />
+          <Property Name="isupload" Type="int" />
+          <Property Name="isdownload" Type="int" />
+          <Property Name="issms" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_WMS_SessionInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sid" Type="nvarchar" MaxLength="60" />
+          <Property Name="uid" Type="int" />
+          <Property Name="username" Type="nvarchar" MaxLength="60" />
+          <Property Name="password" Type="nvarchar" MaxLength="60" />
+          <Property Name="realname" Type="nvarchar" MaxLength="60" />
+          <Property Name="avatar" Type="nvarchar" MaxLength="250" />
+          <Property Name="platform" Type="nvarchar" MaxLength="50" />
+          <Property Name="token" Type="nvarchar" MaxLength="60" />
+          <Property Name="address" Type="nvarchar" MaxLength="250" />
+          <Property Name="roleid" Type="int" />
+          <Property Name="rolename" Type="nvarchar" MaxLength="100" />
+          <Property Name="departid" Type="int" />
+          <Property Name="departname" Type="nvarchar" MaxLength="150" />
+          <Property Name="createtime" Type="datetime" />
+          <Property Name="updatetime" Type="datetime" />
+          <Property Name="timeout" Type="int" />
+          <Property Name="invisible" Type="int" />
+          <Property Name="state" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_WMS_SortAppInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="guid" Type="nvarchar" MaxLength="60" />
+          <Property Name="type" Type="nvarchar" MaxLength="30" />
+          <Property Name="installpath" Type="nvarchar" MaxLength="60" />
+          <Property Name="name" Type="nvarchar" MaxLength="60" />
+          <Property Name="markup" Type="nvarchar" MaxLength="60" />
+          <Property Name="indexpage" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="FP_WMS_SortInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="channelid" Type="int" />
+          <Property Name="appid" Type="int" />
+          <Property Name="display" Type="int" />
+          <Property Name="parentid" Type="int" />
+          <Property Name="parentlist" Type="nvarchar" MaxLength="200" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="markup" Type="nvarchar" MaxLength="60" />
+          <Property Name="pagesize" Type="int" />
+          <Property Name="description" Type="nvarchar" MaxLength="200" />
+          <Property Name="icon" Type="nvarchar" MaxLength="100" />
+          <Property Name="attach_icon" Type="nvarchar" MaxLength="100" />
+          <Property Name="img" Type="nvarchar" MaxLength="100" />
+          <Property Name="attach_img" Type="nvarchar" MaxLength="100" />
+          <Property Name="subcounts" Type="int" />
+          <Property Name="types" Type="nvarchar" MaxLength="200" />
+          <Property Name="showtype" Type="int" />
+          <Property Name="otherurl" Type="nvarchar" MaxLength="200" />
+          <Property Name="posts" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_WMS_SysLogInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uid" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="content" Type="nvarchar" MaxLength="200" />
+          <Property Name="ip" Type="nvarchar" MaxLength="30" />
+          <Property Name="postdatetime" Type="datetime" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_WMS_TaskInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="30" />
+          <Property Name="key" Type="varchar" MaxLength="50" />
+          <Property Name="timeofday" Type="int" />
+          <Property Name="minutes" Type="int" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastexecuted" Type="nvarchar" MaxLength="20" />
+          <Property Name="enabled" Type="int" />
+        </EntityType>
+        <EntityType Name="FP_WMS_TypeInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parentid" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="markup" Type="nvarchar" MaxLength="50" />
+          <Property Name="type" Type="int" />
+          <Property Name="required" Type="int" />
+          <Property Name="description" Type="nvarchar" MaxLength="60" />
+          <Property Name="otherurl" Type="nvarchar" MaxLength="250" />
+          <Property Name="display" Type="int" />
+          <Property Name="img" Type="nvarchar" MaxLength="200" />
+          <Property Name="attach_img" Type="nvarchar" MaxLength="100" />
+          <Property Name="subcounts" Type="int" />
+          <Property Name="sortids" Type="nvarchar" MaxLength="250" />
+          <Property Name="posts" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="FP_WMS_UserInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="roleid" Type="int" />
+          <Property Name="roles" Type="nvarchar" MaxLength="250" />
+          <Property Name="departid" Type="int" />
+          <Property Name="departname" Type="nvarchar" MaxLength="100" />
+          <Property Name="departlist" Type="nvarchar" MaxLength="250" />
+          <Property Name="departs" Type="nvarchar" MaxLength="250" />
+          <Property Name="display" Type="int" />
+          <Property Name="gradeid" Type="int" />
+          <Property Name="types" Type="nvarchar" MaxLength="100" />
+          <Property Name="username" Type="nvarchar" MaxLength="100" />
+          <Property Name="password" Type="nvarchar" MaxLength="32" />
+          <Property Name="password2" Type="nvarchar" MaxLength="32" />
+          <Property Name="email" Type="nvarchar" MaxLength="30" />
+          <Property Name="isemail" Type="int" />
+          <Property Name="mobile" Type="nvarchar" MaxLength="200" />
+          <Property Name="ismobile" Type="int" />
+          <Property Name="realname" Type="nvarchar" MaxLength="100" />
+          <Property Name="cardtype" Type="nvarchar" MaxLength="100" />
+          <Property Name="idcard" Type="nvarchar" MaxLength="60" />
+          <Property Name="isreal" Type="int" />
+          <Property Name="usercode" Type="nvarchar" MaxLength="200" />
+          <Property Name="nickname" Type="nvarchar" MaxLength="20" />
+          <Property Name="avatar" Type="nvarchar" MaxLength="60" />
+          <Property Name="sex" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="exp" Type="int" />
+          <Property Name="credits" Type="int" />
+          <Property Name="regip" Type="nvarchar" MaxLength="15" />
+          <Property Name="joindatetime" Type="datetime" />
+          <Property Name="sumlogin" Type="int" />
+          <Property Name="lastip" Type="nvarchar" MaxLength="15" />
+          <Property Name="lastvisit" Type="datetime" />
+          <Property Name="secques" Type="nvarchar" MaxLength="8" />
+          <Property Name="authstr" Type="nvarchar" MaxLength="20" />
+          <Property Name="authtime" Type="datetime" />
+          <Property Name="authflag" Type="int" />
+          <Property Name="vipdate" Type="nvarchar" MaxLength="20" />
+          <Property Name="state" Type="int" />
+          <Property Name="issso" Type="int" />
+          <Property Name="extend" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityContainer Name="FP_ExamModelStoreContainer">
+          <EntitySet Name="FP_Course_ChapterInfo" EntityType="Self.FP_Course_ChapterInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_Course_CourseInfo" EntityType="Self.FP_Course_CourseInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_Course_VideoInfo" EntityType="Self.FP_Course_VideoInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_Exam_ExamInfo" EntityType="Self.FP_Exam_ExamInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_Exam_ExamLogInfo" EntityType="Self.FP_Exam_ExamLogInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_Exam_ExamNote" EntityType="Self.FP_Exam_ExamNote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_Exam_ExamQuestion" EntityType="Self.FP_Exam_ExamQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_Exam_ExamResult" EntityType="Self.FP_Exam_ExamResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_Exam_ExamResultTopic" EntityType="Self.FP_Exam_ExamResultTopic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_Exam_ExamSignInfo" EntityType="Self.FP_Exam_ExamSignInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_Exam_ExamTopic" EntityType="Self.FP_Exam_ExamTopic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_Exam_ExpInfo" EntityType="Self.FP_Exam_ExpInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_Exam_SortQuestion" EntityType="Self.FP_Exam_SortQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_Exam_TestInfo" EntityType="Self.FP_Exam_TestInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_Exam_TestResult" EntityType="Self.FP_Exam_TestResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_AttachInfo" EntityType="Self.FP_WMS_AttachInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_AttachType" EntityType="Self.FP_WMS_AttachType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_CacheInfo" EntityType="Self.FP_WMS_CacheInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_ChannelInfo" EntityType="Self.FP_WMS_ChannelInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_CreditInfo" EntityType="Self.FP_WMS_CreditInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_Department" EntityType="Self.FP_WMS_Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_DesktopInfo" EntityType="Self.FP_WMS_DesktopInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_GradeInfo" EntityType="Self.FP_WMS_GradeInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_MenuInfo" EntityType="Self.FP_WMS_MenuInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_MsgTempInfo" EntityType="Self.FP_WMS_MsgTempInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_Permission" EntityType="Self.FP_WMS_Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_RoleInfo" EntityType="Self.FP_WMS_RoleInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_SessionInfo" EntityType="Self.FP_WMS_SessionInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_SortAppInfo" EntityType="Self.FP_WMS_SortAppInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_SortInfo" EntityType="Self.FP_WMS_SortInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_SysLogInfo" EntityType="Self.FP_WMS_SysLogInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_TaskInfo" EntityType="Self.FP_WMS_TaskInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_TypeInfo" EntityType="Self.FP_WMS_TypeInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FP_WMS_UserInfo" EntityType="Self.FP_WMS_UserInfo" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FP_ExamModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FP_Course_ChapterInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="videos" Type="Int32" />
+          <Property Name="display" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_Course_CourseInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="channelid" Type="Int32" />
+          <Property Name="sortid" Type="Int32" />
+          <Property Name="typelist" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="teacherid" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Double" />
+          <Property Name="old_price" Type="Double" />
+          <Property Name="memberpice" Type="Double" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="attachid" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="istop" Type="Int32" />
+          <Property Name="learns" Type="Int32" />
+          <Property Name="buys" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="views" Type="Int32" />
+          <Property Name="postdatetime" Type="DateTime" Precision="3" />
+          <Property Name="favorites" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_Course_VideoInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="chapterid" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="videofile" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="videotime" Type="Int32" />
+          <Property Name="attachid" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="postdatetime" Type="DateTime" Precision="3" />
+          <Property Name="display" Type="Int32" />
+          <Property Name="studys" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="departid" Type="Int32" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="channelid" Type="Int32" />
+          <Property Name="sortid" Type="Int32" />
+          <Property Name="typelist" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="total" Type="Double" />
+          <Property Name="passmark" Type="Double" />
+          <Property Name="examtime" Type="Int32" />
+          <Property Name="islimit" Type="Int32" />
+          <Property Name="starttime" Type="DateTime" Precision="3" />
+          <Property Name="endtime" Type="DateTime" Precision="3" />
+          <Property Name="repeats" Type="Int32" />
+          <Property Name="showanswer" Type="Int32" />
+          <Property Name="allowdelete" Type="Int32" />
+          <Property Name="display" Type="Int32" />
+          <Property Name="postdatetime" Type="DateTime" Precision="3" />
+          <Property Name="examtype" Type="Int32" />
+          <Property Name="examroles" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="examdeparts" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="examuser" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="credits" Type="Int32" />
+          <Property Name="exams" Type="Int32" />
+          <Property Name="score" Type="Double" />
+          <Property Name="views" Type="Int32" />
+          <Property Name="questions" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="papers" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="opentime" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="iscopy" Type="Int32" />
+          <Property Name="isvideo" Type="Int32" />
+          <Property Name="iswitch" Type="Int32" />
+          <Property Name="issign" Type="Int32" />
+          <Property Name="client" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="papertype" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamLogInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sortid" Type="Int32" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="channelid" Type="Int32" />
+          <Property Name="answers" Type="Int32" />
+          <Property Name="qidlist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="answerlist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="scorelist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="wrongs" Type="Int32" />
+          <Property Name="curwrongs" Type="Int32" />
+          <Property Name="wronglist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="Int32" />
+          <Property Name="curnotes" Type="Int32" />
+          <Property Name="notelist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="favs" Type="Int32" />
+          <Property Name="curfavs" Type="Int32" />
+          <Property Name="favlist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamNote">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="qid" Type="Int32" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamQuestion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kid" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="parentid" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="channelid" Type="Int32" />
+          <Property Name="sortid" Type="Int32" />
+          <Property Name="typelist" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="display" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="upperflg" Type="Int32" />
+          <Property Name="orderflg" Type="Int32" />
+          <Property Name="answerkey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ascount" Type="Int32" />
+          <Property Name="explain" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="difficulty" Type="Int32" />
+          <Property Name="postdatetime" Type="DateTime" Precision="3" />
+          <Property Name="attachid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="exams" Type="Int32" />
+          <Property Name="wrongs" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamResult">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="departid" Type="Int32" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="channelid" Type="Int32" />
+          <Property Name="sortid" Type="Int32" />
+          <Property Name="examid" Type="Int32" />
+          <Property Name="examname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="examtime" Type="Int32" />
+          <Property Name="examtype" Type="Int32" />
+          <Property Name="showanswer" Type="Int32" />
+          <Property Name="allowdelete" Type="Int32" />
+          <Property Name="total" Type="Double" />
+          <Property Name="passmark" Type="Double" />
+          <Property Name="score1" Type="Double" />
+          <Property Name="score2" Type="Double" />
+          <Property Name="score" Type="Double" />
+          <Property Name="utime" Type="Int32" />
+          <Property Name="islimit" Type="Int32" />
+          <Property Name="starttime" Type="DateTime" Precision="3" />
+          <Property Name="endtime" Type="DateTime" Precision="3" />
+          <Property Name="examdatetime" Type="DateTime" Precision="3" />
+          <Property Name="credits" Type="Int32" />
+          <Property Name="questions" Type="Int32" />
+          <Property Name="wrongs" Type="Int32" />
+          <Property Name="unanswer" Type="Int32" />
+          <Property Name="exp" Type="Int32" />
+          <Property Name="getcredits" Type="Int32" />
+          <Property Name="exnote" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="attachid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="paper" Type="Int32" />
+          <Property Name="ip" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="mac" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isvideo" Type="Int32" />
+          <Property Name="client" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="papertype" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamResultTopic">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="resultid" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="display" Type="Int32" />
+          <Property Name="perscore" Type="Double" />
+          <Property Name="score" Type="Double" />
+          <Property Name="questions" Type="Int32" />
+          <Property Name="wrongs" Type="Int32" />
+          <Property Name="questionlist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="answerlist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="scorelist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="correctlist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="paper" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamSignInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ikey" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="examid" Type="Int32" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="signer" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="payimg" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="attachid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="reason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="postdatetime" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExamTopic">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="examid" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="display" Type="Int32" />
+          <Property Name="questions" Type="Int32" />
+          <Property Name="curquestions" Type="Int32" />
+          <Property Name="questionlist" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="perscore" Type="Double" />
+          <Property Name="randomsort" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="randomcount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="randoms" Type="Int32" />
+          <Property Name="paper" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_Exam_ExpInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="examid" Type="Int32" />
+          <Property Name="scorelower" Type="Int32" />
+          <Property Name="scoreupper" Type="Int32" />
+          <Property Name="exp" Type="Int32" />
+          <Property Name="credits" Type="Int32" />
+          <Property Name="comment" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FP_Exam_SortQuestion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="channelid" Type="Int32" />
+          <Property Name="sortid" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="typeid" Type="Int32" />
+          <Property Name="counts" Type="Int32" />
+          <Property Name="questionlist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FP_Exam_TestInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="channelid" Type="Int32" />
+          <Property Name="sortid" Type="Int32" />
+          <Property Name="typelist" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="repeats" Type="Int32" />
+          <Property Name="client" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="flag_roles" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="flag_departs" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="flag_users" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="questions" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="sorts" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="counts" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_Exam_TestResult">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="testid" Type="Int32" />
+          <Property Name="total" Type="Int32" />
+          <Property Name="wrong" Type="Int32" />
+          <Property Name="ip" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FP_WMS_AttachInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="attachid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentid" Type="Int32" />
+          <Property Name="platform" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="app" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="postid" Type="Int32" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="filename" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="filetype" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="filesize" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="uploadtime" Type="DateTime" Precision="3" />
+          <Property Name="downloads" Type="Int32" />
+          <Property Name="reads" Type="Int32" />
+          <Property Name="issync" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_WMS_AttachType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="extension" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="maxsize" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FP_WMS_CacheInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="expires" Type="Int32" />
+          <Property Name="cachedatetime" Type="DateTime" Precision="3" />
+          <Property Name="file" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FP_WMS_ChannelInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="display" Type="Int32" />
+          <Property Name="markup" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="sortapps" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FP_WMS_CreditInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="credits" Type="Int32" />
+          <Property Name="postdatetime" Type="DateTime" Precision="3" />
+          <Property Name="doid" Type="Int32" />
+          <Property Name="doname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FP_WMS_Department">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="keyid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="parentid" Type="Int32" />
+          <Property Name="parentlist" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="departlist" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="longname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="shortname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="markup" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="types" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="manager" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="departer" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="usercount" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="display" Type="Int32" />
+          <Property Name="subcounts" Type="Int32" />
+          <Property Name="posts" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_WMS_DesktopInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="app" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="parentid" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="markup" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="platform" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="icon" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="attach_icon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="target" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="desk" Type="Int32" />
+          <Property Name="width" Type="Int32" />
+          <Property Name="height" Type="Int32" />
+          <Property Name="hidden" Type="Int32" />
+          <Property Name="display" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_WMS_GradeInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="departid" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="display" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_WMS_MenuInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parentid" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="platform" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="lefturl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="righturl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="display" Type="Int32" />
+          <Property Name="hidden" Type="Int32" />
+          <Property Name="system" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_WMS_MsgTempInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="markup" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_WMS_Permission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="flagpage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isadd" Type="Int32" />
+          <Property Name="isupdate" Type="Int32" />
+          <Property Name="isdelete" Type="Int32" />
+          <Property Name="isaudit" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_WMS_RoleInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="markup" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="desktopurl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="sorts" Type="String" MaxLength="2500" FixedLength="false" Unicode="true" />
+          <Property Name="menus" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="desktop" Type="String" MaxLength="2500" FixedLength="false" Unicode="true" />
+          <Property Name="permission" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="isadmin" Type="Int32" />
+          <Property Name="isupload" Type="Int32" />
+          <Property Name="isdownload" Type="Int32" />
+          <Property Name="issms" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_WMS_SessionInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sid" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="username" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="realname" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="avatar" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="platform" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="token" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="roleid" Type="Int32" />
+          <Property Name="rolename" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="departid" Type="Int32" />
+          <Property Name="departname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="createtime" Type="DateTime" Precision="3" />
+          <Property Name="updatetime" Type="DateTime" Precision="3" />
+          <Property Name="timeout" Type="Int32" />
+          <Property Name="invisible" Type="Int32" />
+          <Property Name="state" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_WMS_SortAppInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="guid" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="installpath" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="markup" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="indexpage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FP_WMS_SortInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="channelid" Type="Int32" />
+          <Property Name="appid" Type="Int32" />
+          <Property Name="display" Type="Int32" />
+          <Property Name="parentid" Type="Int32" />
+          <Property Name="parentlist" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="markup" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="pagesize" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="icon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="attach_icon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="attach_img" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="subcounts" Type="Int32" />
+          <Property Name="types" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="showtype" Type="Int32" />
+          <Property Name="otherurl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="posts" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_WMS_SysLogInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="content" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ip" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="postdatetime" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_WMS_TaskInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="timeofday" Type="Int32" />
+          <Property Name="minutes" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastexecuted" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="enabled" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FP_WMS_TypeInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parentid" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="markup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="required" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="otherurl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="display" Type="Int32" />
+          <Property Name="img" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="attach_img" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="subcounts" Type="Int32" />
+          <Property Name="sortids" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="posts" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FP_WMS_UserInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roleid" Type="Int32" />
+          <Property Name="roles" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="departid" Type="Int32" />
+          <Property Name="departname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="departlist" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="departs" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="display" Type="Int32" />
+          <Property Name="gradeid" Type="Int32" />
+          <Property Name="types" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="password2" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="isemail" Type="Int32" />
+          <Property Name="mobile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ismobile" Type="Int32" />
+          <Property Name="realname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cardtype" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idcard" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="isreal" Type="Int32" />
+          <Property Name="usercode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="nickname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="avatar" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="sex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="exp" Type="Int32" />
+          <Property Name="credits" Type="Int32" />
+          <Property Name="regip" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="joindatetime" Type="DateTime" Precision="3" />
+          <Property Name="sumlogin" Type="Int32" />
+          <Property Name="lastip" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="lastvisit" Type="DateTime" Precision="3" />
+          <Property Name="secques" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="authstr" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="authtime" Type="DateTime" Precision="3" />
+          <Property Name="authflag" Type="Int32" />
+          <Property Name="vipdate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="Int32" />
+          <Property Name="issso" Type="Int32" />
+          <Property Name="extend" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="FP_ExamEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FP_Course_ChapterInfo" EntityType="Self.FP_Course_ChapterInfo" />
+          <EntitySet Name="FP_Course_CourseInfo" EntityType="Self.FP_Course_CourseInfo" />
+          <EntitySet Name="FP_Course_VideoInfo" EntityType="Self.FP_Course_VideoInfo" />
+          <EntitySet Name="FP_Exam_ExamInfo" EntityType="Self.FP_Exam_ExamInfo" />
+          <EntitySet Name="FP_Exam_ExamLogInfo" EntityType="Self.FP_Exam_ExamLogInfo" />
+          <EntitySet Name="FP_Exam_ExamNote" EntityType="Self.FP_Exam_ExamNote" />
+          <EntitySet Name="FP_Exam_ExamQuestion" EntityType="Self.FP_Exam_ExamQuestion" />
+          <EntitySet Name="FP_Exam_ExamResult" EntityType="Self.FP_Exam_ExamResult" />
+          <EntitySet Name="FP_Exam_ExamResultTopic" EntityType="Self.FP_Exam_ExamResultTopic" />
+          <EntitySet Name="FP_Exam_ExamSignInfo" EntityType="Self.FP_Exam_ExamSignInfo" />
+          <EntitySet Name="FP_Exam_ExamTopic" EntityType="Self.FP_Exam_ExamTopic" />
+          <EntitySet Name="FP_Exam_ExpInfo" EntityType="Self.FP_Exam_ExpInfo" />
+          <EntitySet Name="FP_Exam_SortQuestion" EntityType="Self.FP_Exam_SortQuestion" />
+          <EntitySet Name="FP_Exam_TestInfo" EntityType="Self.FP_Exam_TestInfo" />
+          <EntitySet Name="FP_Exam_TestResult" EntityType="Self.FP_Exam_TestResult" />
+          <EntitySet Name="FP_WMS_AttachInfo" EntityType="Self.FP_WMS_AttachInfo" />
+          <EntitySet Name="FP_WMS_AttachType" EntityType="Self.FP_WMS_AttachType" />
+          <EntitySet Name="FP_WMS_CacheInfo" EntityType="Self.FP_WMS_CacheInfo" />
+          <EntitySet Name="FP_WMS_ChannelInfo" EntityType="Self.FP_WMS_ChannelInfo" />
+          <EntitySet Name="FP_WMS_CreditInfo" EntityType="Self.FP_WMS_CreditInfo" />
+          <EntitySet Name="FP_WMS_Department" EntityType="Self.FP_WMS_Department" />
+          <EntitySet Name="FP_WMS_DesktopInfo" EntityType="Self.FP_WMS_DesktopInfo" />
+          <EntitySet Name="FP_WMS_GradeInfo" EntityType="Self.FP_WMS_GradeInfo" />
+          <EntitySet Name="FP_WMS_MenuInfo" EntityType="Self.FP_WMS_MenuInfo" />
+          <EntitySet Name="FP_WMS_MsgTempInfo" EntityType="Self.FP_WMS_MsgTempInfo" />
+          <EntitySet Name="FP_WMS_Permission" EntityType="Self.FP_WMS_Permission" />
+          <EntitySet Name="FP_WMS_RoleInfo" EntityType="Self.FP_WMS_RoleInfo" />
+          <EntitySet Name="FP_WMS_SessionInfo" EntityType="Self.FP_WMS_SessionInfo" />
+          <EntitySet Name="FP_WMS_SortAppInfo" EntityType="Self.FP_WMS_SortAppInfo" />
+          <EntitySet Name="FP_WMS_SortInfo" EntityType="Self.FP_WMS_SortInfo" />
+          <EntitySet Name="FP_WMS_SysLogInfo" EntityType="Self.FP_WMS_SysLogInfo" />
+          <EntitySet Name="FP_WMS_TaskInfo" EntityType="Self.FP_WMS_TaskInfo" />
+          <EntitySet Name="FP_WMS_TypeInfo" EntityType="Self.FP_WMS_TypeInfo" />
+          <EntitySet Name="FP_WMS_UserInfo" EntityType="Self.FP_WMS_UserInfo" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FP_ExamModelStoreContainer" CdmEntityContainer="FP_ExamEntities">
+          <EntitySetMapping Name="FP_Course_ChapterInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Course_ChapterInfo">
+              <MappingFragment StoreEntitySet="FP_Course_ChapterInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="videos" ColumnName="videos" />
+                <ScalarProperty Name="display" ColumnName="display" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_Course_CourseInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Course_CourseInfo">
+              <MappingFragment StoreEntitySet="FP_Course_CourseInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="channelid" ColumnName="channelid" />
+                <ScalarProperty Name="sortid" ColumnName="sortid" />
+                <ScalarProperty Name="typelist" ColumnName="typelist" />
+                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="old_price" ColumnName="old_price" />
+                <ScalarProperty Name="memberpice" ColumnName="memberpice" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="attachid" ColumnName="attachid" />
+                <ScalarProperty Name="istop" ColumnName="istop" />
+                <ScalarProperty Name="learns" ColumnName="learns" />
+                <ScalarProperty Name="buys" ColumnName="buys" />
+                <ScalarProperty Name="views" ColumnName="views" />
+                <ScalarProperty Name="postdatetime" ColumnName="postdatetime" />
+                <ScalarProperty Name="favorites" ColumnName="favorites" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_Course_VideoInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Course_VideoInfo">
+              <MappingFragment StoreEntitySet="FP_Course_VideoInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="chapterid" ColumnName="chapterid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="videofile" ColumnName="videofile" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="videotime" ColumnName="videotime" />
+                <ScalarProperty Name="attachid" ColumnName="attachid" />
+                <ScalarProperty Name="postdatetime" ColumnName="postdatetime" />
+                <ScalarProperty Name="display" ColumnName="display" />
+                <ScalarProperty Name="studys" ColumnName="studys" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_Exam_ExamInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Exam_ExamInfo">
+              <MappingFragment StoreEntitySet="FP_Exam_ExamInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="departid" ColumnName="departid" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="channelid" ColumnName="channelid" />
+                <ScalarProperty Name="sortid" ColumnName="sortid" />
+                <ScalarProperty Name="typelist" ColumnName="typelist" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="passmark" ColumnName="passmark" />
+                <ScalarProperty Name="examtime" ColumnName="examtime" />
+                <ScalarProperty Name="islimit" ColumnName="islimit" />
+                <ScalarProperty Name="starttime" ColumnName="starttime" />
+                <ScalarProperty Name="endtime" ColumnName="endtime" />
+                <ScalarProperty Name="repeats" ColumnName="repeats" />
+                <ScalarProperty Name="showanswer" ColumnName="showanswer" />
+                <ScalarProperty Name="allowdelete" ColumnName="allowdelete" />
+                <ScalarProperty Name="display" ColumnName="display" />
+                <ScalarProperty Name="postdatetime" ColumnName="postdatetime" />
+                <ScalarProperty Name="examtype" ColumnName="examtype" />
+                <ScalarProperty Name="examroles" ColumnName="examroles" />
+                <ScalarProperty Name="examdeparts" ColumnName="examdeparts" />
+                <ScalarProperty Name="examuser" ColumnName="examuser" />
+                <ScalarProperty Name="credits" ColumnName="credits" />
+                <ScalarProperty Name="exams" ColumnName="exams" />
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="views" ColumnName="views" />
+                <ScalarProperty Name="questions" ColumnName="questions" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="papers" ColumnName="papers" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="opentime" ColumnName="opentime" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="iscopy" ColumnName="iscopy" />
+                <ScalarProperty Name="isvideo" ColumnName="isvideo" />
+                <ScalarProperty Name="iswitch" ColumnName="iswitch" />
+                <ScalarProperty Name="issign" ColumnName="issign" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="papertype" ColumnName="papertype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_Exam_ExamLogInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Exam_ExamLogInfo">
+              <MappingFragment StoreEntitySet="FP_Exam_ExamLogInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sortid" ColumnName="sortid" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="channelid" ColumnName="channelid" />
+                <ScalarProperty Name="answers" ColumnName="answers" />
+                <ScalarProperty Name="qidlist" ColumnName="qidlist" />
+                <ScalarProperty Name="answerlist" ColumnName="answerlist" />
+                <ScalarProperty Name="scorelist" ColumnName="scorelist" />
+                <ScalarProperty Name="wrongs" ColumnName="wrongs" />
+                <ScalarProperty Name="curwrongs" ColumnName="curwrongs" />
+                <ScalarProperty Name="wronglist" ColumnName="wronglist" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="curnotes" ColumnName="curnotes" />
+                <ScalarProperty Name="notelist" ColumnName="notelist" />
+                <ScalarProperty Name="favs" ColumnName="favs" />
+                <ScalarProperty Name="curfavs" ColumnName="curfavs" />
+                <ScalarProperty Name="favlist" ColumnName="favlist" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_Exam_ExamNote">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Exam_ExamNote">
+              <MappingFragment StoreEntitySet="FP_Exam_ExamNote">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="qid" ColumnName="qid" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_Exam_ExamQuestion">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Exam_ExamQuestion">
+              <MappingFragment StoreEntitySet="FP_Exam_ExamQuestion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kid" ColumnName="kid" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="channelid" ColumnName="channelid" />
+                <ScalarProperty Name="sortid" ColumnName="sortid" />
+                <ScalarProperty Name="typelist" ColumnName="typelist" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="display" ColumnName="display" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="answer" ColumnName="answer" />
+                <ScalarProperty Name="upperflg" ColumnName="upperflg" />
+                <ScalarProperty Name="orderflg" ColumnName="orderflg" />
+                <ScalarProperty Name="answerkey" ColumnName="answerkey" />
+                <ScalarProperty Name="ascount" ColumnName="ascount" />
+                <ScalarProperty Name="explain" ColumnName="explain" />
+                <ScalarProperty Name="difficulty" ColumnName="difficulty" />
+                <ScalarProperty Name="postdatetime" ColumnName="postdatetime" />
+                <ScalarProperty Name="attachid" ColumnName="attachid" />
+                <ScalarProperty Name="exams" ColumnName="exams" />
+                <ScalarProperty Name="wrongs" ColumnName="wrongs" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_Exam_ExamResult">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Exam_ExamResult">
+              <MappingFragment StoreEntitySet="FP_Exam_ExamResult">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="departid" ColumnName="departid" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="channelid" ColumnName="channelid" />
+                <ScalarProperty Name="sortid" ColumnName="sortid" />
+                <ScalarProperty Name="examid" ColumnName="examid" />
+                <ScalarProperty Name="examname" ColumnName="examname" />
+                <ScalarProperty Name="examtime" ColumnName="examtime" />
+                <ScalarProperty Name="examtype" ColumnName="examtype" />
+                <ScalarProperty Name="showanswer" ColumnName="showanswer" />
+                <ScalarProperty Name="allowdelete" ColumnName="allowdelete" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="passmark" ColumnName="passmark" />
+                <ScalarProperty Name="score1" ColumnName="score1" />
+                <ScalarProperty Name="score2" ColumnName="score2" />
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="utime" ColumnName="utime" />
+                <ScalarProperty Name="islimit" ColumnName="islimit" />
+                <ScalarProperty Name="starttime" ColumnName="starttime" />
+                <ScalarProperty Name="endtime" ColumnName="endtime" />
+                <ScalarProperty Name="examdatetime" ColumnName="examdatetime" />
+                <ScalarProperty Name="credits" ColumnName="credits" />
+                <ScalarProperty Name="questions" ColumnName="questions" />
+                <ScalarProperty Name="wrongs" ColumnName="wrongs" />
+                <ScalarProperty Name="unanswer" ColumnName="unanswer" />
+                <ScalarProperty Name="exp" ColumnName="exp" />
+                <ScalarProperty Name="getcredits" ColumnName="getcredits" />
+                <ScalarProperty Name="exnote" ColumnName="exnote" />
+                <ScalarProperty Name="attachid" ColumnName="attachid" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="paper" ColumnName="paper" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="mac" ColumnName="mac" />
+                <ScalarProperty Name="isvideo" ColumnName="isvideo" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="papertype" ColumnName="papertype" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_Exam_ExamResultTopic">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Exam_ExamResultTopic">
+              <MappingFragment StoreEntitySet="FP_Exam_ExamResultTopic">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="resultid" ColumnName="resultid" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="display" ColumnName="display" />
+                <ScalarProperty Name="perscore" ColumnName="perscore" />
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="questions" ColumnName="questions" />
+                <ScalarProperty Name="wrongs" ColumnName="wrongs" />
+                <ScalarProperty Name="questionlist" ColumnName="questionlist" />
+                <ScalarProperty Name="answerlist" ColumnName="answerlist" />
+                <ScalarProperty Name="scorelist" ColumnName="scorelist" />
+                <ScalarProperty Name="correctlist" ColumnName="correctlist" />
+                <ScalarProperty Name="paper" ColumnName="paper" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_Exam_ExamSignInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Exam_ExamSignInfo">
+              <MappingFragment StoreEntitySet="FP_Exam_ExamSignInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ikey" ColumnName="ikey" />
+                <ScalarProperty Name="examid" ColumnName="examid" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="signer" ColumnName="signer" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="payimg" ColumnName="payimg" />
+                <ScalarProperty Name="attachid" ColumnName="attachid" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="postdatetime" ColumnName="postdatetime" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_Exam_ExamTopic">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Exam_ExamTopic">
+              <MappingFragment StoreEntitySet="FP_Exam_ExamTopic">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="examid" ColumnName="examid" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="display" ColumnName="display" />
+                <ScalarProperty Name="questions" ColumnName="questions" />
+                <ScalarProperty Name="curquestions" ColumnName="curquestions" />
+                <ScalarProperty Name="questionlist" ColumnName="questionlist" />
+                <ScalarProperty Name="perscore" ColumnName="perscore" />
+                <ScalarProperty Name="randomsort" ColumnName="randomsort" />
+                <ScalarProperty Name="randomcount" ColumnName="randomcount" />
+                <ScalarProperty Name="randoms" ColumnName="randoms" />
+                <ScalarProperty Name="paper" ColumnName="paper" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_Exam_ExpInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Exam_ExpInfo">
+              <MappingFragment StoreEntitySet="FP_Exam_ExpInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="examid" ColumnName="examid" />
+                <ScalarProperty Name="scorelower" ColumnName="scorelower" />
+                <ScalarProperty Name="scoreupper" ColumnName="scoreupper" />
+                <ScalarProperty Name="exp" ColumnName="exp" />
+                <ScalarProperty Name="credits" ColumnName="credits" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_Exam_SortQuestion">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Exam_SortQuestion">
+              <MappingFragment StoreEntitySet="FP_Exam_SortQuestion">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="channelid" ColumnName="channelid" />
+                <ScalarProperty Name="sortid" ColumnName="sortid" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="typeid" ColumnName="typeid" />
+                <ScalarProperty Name="counts" ColumnName="counts" />
+                <ScalarProperty Name="questionlist" ColumnName="questionlist" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_Exam_TestInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Exam_TestInfo">
+              <MappingFragment StoreEntitySet="FP_Exam_TestInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="channelid" ColumnName="channelid" />
+                <ScalarProperty Name="sortid" ColumnName="sortid" />
+                <ScalarProperty Name="typelist" ColumnName="typelist" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="repeats" ColumnName="repeats" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="flag_roles" ColumnName="flag_roles" />
+                <ScalarProperty Name="flag_departs" ColumnName="flag_departs" />
+                <ScalarProperty Name="flag_users" ColumnName="flag_users" />
+                <ScalarProperty Name="questions" ColumnName="questions" />
+                <ScalarProperty Name="sorts" ColumnName="sorts" />
+                <ScalarProperty Name="counts" ColumnName="counts" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_Exam_TestResult">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_Exam_TestResult">
+              <MappingFragment StoreEntitySet="FP_Exam_TestResult">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="testid" ColumnName="testid" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="wrong" ColumnName="wrong" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_AttachInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_AttachInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_AttachInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="attachid" ColumnName="attachid" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="platform" ColumnName="platform" />
+                <ScalarProperty Name="app" ColumnName="app" />
+                <ScalarProperty Name="postid" ColumnName="postid" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="filetype" ColumnName="filetype" />
+                <ScalarProperty Name="filesize" ColumnName="filesize" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="uploadtime" ColumnName="uploadtime" />
+                <ScalarProperty Name="downloads" ColumnName="downloads" />
+                <ScalarProperty Name="reads" ColumnName="reads" />
+                <ScalarProperty Name="issync" ColumnName="issync" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_AttachType">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_AttachType">
+              <MappingFragment StoreEntitySet="FP_WMS_AttachType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="extension" ColumnName="extension" />
+                <ScalarProperty Name="maxsize" ColumnName="maxsize" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_CacheInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_CacheInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_CacheInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="key" ColumnName="key" />
+                <ScalarProperty Name="expires" ColumnName="expires" />
+                <ScalarProperty Name="cachedatetime" ColumnName="cachedatetime" />
+                <ScalarProperty Name="file" ColumnName="file" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_ChannelInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_ChannelInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_ChannelInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="display" ColumnName="display" />
+                <ScalarProperty Name="markup" ColumnName="markup" />
+                <ScalarProperty Name="sortapps" ColumnName="sortapps" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_CreditInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_CreditInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_CreditInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="credits" ColumnName="credits" />
+                <ScalarProperty Name="postdatetime" ColumnName="postdatetime" />
+                <ScalarProperty Name="doid" ColumnName="doid" />
+                <ScalarProperty Name="doname" ColumnName="doname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_Department">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_Department">
+              <MappingFragment StoreEntitySet="FP_WMS_Department">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="keyid" ColumnName="keyid" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="parentlist" ColumnName="parentlist" />
+                <ScalarProperty Name="departlist" ColumnName="departlist" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="longname" ColumnName="longname" />
+                <ScalarProperty Name="shortname" ColumnName="shortname" />
+                <ScalarProperty Name="markup" ColumnName="markup" />
+                <ScalarProperty Name="types" ColumnName="types" />
+                <ScalarProperty Name="manager" ColumnName="manager" />
+                <ScalarProperty Name="departer" ColumnName="departer" />
+                <ScalarProperty Name="usercount" ColumnName="usercount" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="display" ColumnName="display" />
+                <ScalarProperty Name="subcounts" ColumnName="subcounts" />
+                <ScalarProperty Name="posts" ColumnName="posts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_DesktopInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_DesktopInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_DesktopInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="app" ColumnName="app" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="markup" ColumnName="markup" />
+                <ScalarProperty Name="platform" ColumnName="platform" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
+                <ScalarProperty Name="attach_icon" ColumnName="attach_icon" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="target" ColumnName="target" />
+                <ScalarProperty Name="desk" ColumnName="desk" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="hidden" ColumnName="hidden" />
+                <ScalarProperty Name="display" ColumnName="display" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_GradeInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_GradeInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_GradeInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="departid" ColumnName="departid" />
+                <ScalarProperty Name="display" ColumnName="display" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_MenuInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_MenuInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_MenuInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="platform" ColumnName="platform" />
+                <ScalarProperty Name="lefturl" ColumnName="lefturl" />
+                <ScalarProperty Name="righturl" ColumnName="righturl" />
+                <ScalarProperty Name="display" ColumnName="display" />
+                <ScalarProperty Name="hidden" ColumnName="hidden" />
+                <ScalarProperty Name="system" ColumnName="system" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_MsgTempInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_MsgTempInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_MsgTempInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="markup" ColumnName="markup" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_Permission">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_Permission">
+              <MappingFragment StoreEntitySet="FP_WMS_Permission">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="flagpage" ColumnName="flagpage" />
+                <ScalarProperty Name="isadd" ColumnName="isadd" />
+                <ScalarProperty Name="isupdate" ColumnName="isupdate" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
+                <ScalarProperty Name="isaudit" ColumnName="isaudit" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_RoleInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_RoleInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_RoleInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="markup" ColumnName="markup" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="desktopurl" ColumnName="desktopurl" />
+                <ScalarProperty Name="sorts" ColumnName="sorts" />
+                <ScalarProperty Name="menus" ColumnName="menus" />
+                <ScalarProperty Name="desktop" ColumnName="desktop" />
+                <ScalarProperty Name="permission" ColumnName="permission" />
+                <ScalarProperty Name="isadmin" ColumnName="isadmin" />
+                <ScalarProperty Name="isupload" ColumnName="isupload" />
+                <ScalarProperty Name="isdownload" ColumnName="isdownload" />
+                <ScalarProperty Name="issms" ColumnName="issms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_SessionInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_SessionInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_SessionInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="realname" ColumnName="realname" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="platform" ColumnName="platform" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="roleid" ColumnName="roleid" />
+                <ScalarProperty Name="rolename" ColumnName="rolename" />
+                <ScalarProperty Name="departid" ColumnName="departid" />
+                <ScalarProperty Name="departname" ColumnName="departname" />
+                <ScalarProperty Name="createtime" ColumnName="createtime" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="timeout" ColumnName="timeout" />
+                <ScalarProperty Name="invisible" ColumnName="invisible" />
+                <ScalarProperty Name="state" ColumnName="state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_SortAppInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_SortAppInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_SortAppInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="guid" ColumnName="guid" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="installpath" ColumnName="installpath" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="markup" ColumnName="markup" />
+                <ScalarProperty Name="indexpage" ColumnName="indexpage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_SortInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_SortInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_SortInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="channelid" ColumnName="channelid" />
+                <ScalarProperty Name="appid" ColumnName="appid" />
+                <ScalarProperty Name="display" ColumnName="display" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="parentlist" ColumnName="parentlist" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="markup" ColumnName="markup" />
+                <ScalarProperty Name="pagesize" ColumnName="pagesize" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
+                <ScalarProperty Name="attach_icon" ColumnName="attach_icon" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="attach_img" ColumnName="attach_img" />
+                <ScalarProperty Name="subcounts" ColumnName="subcounts" />
+                <ScalarProperty Name="types" ColumnName="types" />
+                <ScalarProperty Name="showtype" ColumnName="showtype" />
+                <ScalarProperty Name="otherurl" ColumnName="otherurl" />
+                <ScalarProperty Name="posts" ColumnName="posts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_SysLogInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_SysLogInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_SysLogInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="postdatetime" ColumnName="postdatetime" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_TaskInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_TaskInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_TaskInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="key" ColumnName="key" />
+                <ScalarProperty Name="timeofday" ColumnName="timeofday" />
+                <ScalarProperty Name="minutes" ColumnName="minutes" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="lastexecuted" ColumnName="lastexecuted" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_TypeInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_TypeInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_TypeInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="markup" ColumnName="markup" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="required" ColumnName="required" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="otherurl" ColumnName="otherurl" />
+                <ScalarProperty Name="display" ColumnName="display" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="attach_img" ColumnName="attach_img" />
+                <ScalarProperty Name="subcounts" ColumnName="subcounts" />
+                <ScalarProperty Name="sortids" ColumnName="sortids" />
+                <ScalarProperty Name="posts" ColumnName="posts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FP_WMS_UserInfo">
+            <EntityTypeMapping TypeName="FP_ExamModel.FP_WMS_UserInfo">
+              <MappingFragment StoreEntitySet="FP_WMS_UserInfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="roleid" ColumnName="roleid" />
+                <ScalarProperty Name="roles" ColumnName="roles" />
+                <ScalarProperty Name="departid" ColumnName="departid" />
+                <ScalarProperty Name="departname" ColumnName="departname" />
+                <ScalarProperty Name="departlist" ColumnName="departlist" />
+                <ScalarProperty Name="departs" ColumnName="departs" />
+                <ScalarProperty Name="display" ColumnName="display" />
+                <ScalarProperty Name="gradeid" ColumnName="gradeid" />
+                <ScalarProperty Name="types" ColumnName="types" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="password2" ColumnName="password2" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="isemail" ColumnName="isemail" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="ismobile" ColumnName="ismobile" />
+                <ScalarProperty Name="realname" ColumnName="realname" />
+                <ScalarProperty Name="cardtype" ColumnName="cardtype" />
+                <ScalarProperty Name="idcard" ColumnName="idcard" />
+                <ScalarProperty Name="isreal" ColumnName="isreal" />
+                <ScalarProperty Name="usercode" ColumnName="usercode" />
+                <ScalarProperty Name="nickname" ColumnName="nickname" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="exp" ColumnName="exp" />
+                <ScalarProperty Name="credits" ColumnName="credits" />
+                <ScalarProperty Name="regip" ColumnName="regip" />
+                <ScalarProperty Name="joindatetime" ColumnName="joindatetime" />
+                <ScalarProperty Name="sumlogin" ColumnName="sumlogin" />
+                <ScalarProperty Name="lastip" ColumnName="lastip" />
+                <ScalarProperty Name="lastvisit" ColumnName="lastvisit" />
+                <ScalarProperty Name="secques" ColumnName="secques" />
+                <ScalarProperty Name="authstr" ColumnName="authstr" />
+                <ScalarProperty Name="authtime" ColumnName="authtime" />
+                <ScalarProperty Name="authflag" ColumnName="authflag" />
+                <ScalarProperty Name="vipdate" ColumnName="vipdate" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="issso" ColumnName="issso" />
+                <ScalarProperty Name="extend" ColumnName="extend" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
