@@ -134,26 +134,34 @@ namespace FP_wab.Controllers
                     int cnd = 1;
                     foreach (string question_str in question_strs)
                     {
-                        int qid = int.Parse(question_str);
-                        var question = db.FP_Exam_ExamQuestion.SingleOrDefault(t => t.id == qid);
-                        QuestionModel new_q = new QuestionModel();
-                        new_q.SortId = cnd++;
-                        new_q.Title = question.title.Replace("<br />", "");
-                        List<string> options = new List<string>();
-                        string[] option_strs = question.content.Split('§');
-                        foreach(string value in option_strs)
+                        try
                         {
-                            options.Add(value);
+                            int qid = int.Parse(question_str);
+                            var question = db.FP_Exam_ExamQuestion.SingleOrDefault(t => t.id == qid);
+                            QuestionModel new_q = new QuestionModel();
+                            new_q.SortId = cnd++;
+                            new_q.Title = question.title.Replace("<br />", "");
+                            List<string> options = new List<string>();
+                            string[] option_strs = question.content.Split('§');
+                            foreach (string value in option_strs)
+                            {
+                                options.Add(value);
+                            }
+                            new_q.options = options;
+                            if (answer_strs != null && answer_strs[cnd - 2] != "")
+                            {
+                                new_q.now_option = ((int)answer_strs[cnd - 2][0]) - 64;
+                                answeredSum++;
+                            }
+                            else new_q.now_option = 0;
+                            new_q.Id = qid;
+                            questions.Add(new_q);
                         }
-                        new_q.options = options;
-                        if (answer_strs != null && answer_strs[cnd - 2] != "")
+                        catch (Exception)
                         {
-                            new_q.now_option = ((int)answer_strs[cnd - 2][0]) - 64;
-                            answeredSum++;
+                            continue;
                         }
-                        else new_q.now_option = 0;
-                        new_q.Id = qid;
-                        questions.Add(new_q);
+                        
                     }
                 }
                 questionDic.Add(examresultopics[i], questions);
@@ -199,27 +207,34 @@ namespace FP_wab.Controllers
                     int cnd = 1;
                     foreach (string question_str in question_strs)
                     {
-                        int qid = int.Parse(question_str);
-                        var question = db.FP_Exam_ExamQuestion.SingleOrDefault(t => t.id == qid);
-                        AnalysisQuestionModel new_q = new AnalysisQuestionModel();
-                        new_q.SortId = cnd++;
-                        new_q.Title = question.title.Replace("<br />", "");
-                        List<string> options = new List<string>();
-                        string[] option_strs = question.content.Split('§');
-                        foreach (string value in option_strs)
+                        try
                         {
-                            options.Add(value);
+                            int qid = int.Parse(question_str);
+                            var question = db.FP_Exam_ExamQuestion.SingleOrDefault(t => t.id == qid);
+                            AnalysisQuestionModel new_q = new AnalysisQuestionModel();
+                            new_q.SortId = cnd++;
+                            new_q.Title = question.title.Replace("<br />", "");
+                            List<string> options = new List<string>();
+                            string[] option_strs = question.content.Split('§');
+                            foreach (string value in option_strs)
+                            {
+                                options.Add(value);
+                            }
+                            new_q.options = options;
+                            if (answer_strs != null && answer_strs[cnd - 2] != "")
+                            {
+                                new_q.now_option = ((int)answer_strs[cnd - 2][0]) - 64;
+                                answeredSum++;
+                            }
+                            else new_q.now_option = 0;
+                            new_q.Id = qid;
+                            new_q.Answer = question.answer;
+                            questions.Add(new_q);
                         }
-                        new_q.options = options;
-                        if (answer_strs != null && answer_strs[cnd - 2] != "")
+                        catch (Exception)
                         {
-                            new_q.now_option = ((int)answer_strs[cnd - 2][0]) - 64;
-                            answeredSum++;
+                            continue;
                         }
-                        else new_q.now_option = 0;
-                        new_q.Id = qid;
-                        new_q.Answer = question.answer;
-                        questions.Add(new_q);
                     }
                 }
                 questionDic.Add(examresultopics[i], questions);

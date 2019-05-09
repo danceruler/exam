@@ -66,6 +66,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -155,6 +156,7 @@
     </Compile>
     <Compile Include="Help\CreateExamHelp.cs" />
     <Compile Include="Help\ExamingHelp.cs" />
+    <Compile Include="Help\ExcelHelp.cs" />
     <Compile Include="Help\QuestionHelp.cs" />
     <Compile Include="Models\TypeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

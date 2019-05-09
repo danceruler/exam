@@ -57,6 +57,7 @@ namespace FP_wab.Help
                         {
                             examresultopic.correctlist += "0";
                             examresultopic.scorelist += "0";
+                            question.wrongs += 1;
                             wrongsum++;
                         }
                         else
@@ -71,6 +72,7 @@ namespace FP_wab.Help
                             {
                                 examresultopic.correctlist += "0";
                                 examresultopic.scorelist += "0";
+                                question.wrongs += 1;
                                 wrongsum++;
                             }
                         }
@@ -79,6 +81,9 @@ namespace FP_wab.Help
                             examresultopic.correctlist += "|";
                             examresultopic.scorelist += "|";
                         }
+                        //题目考试次数加一
+                        question.exams += 1;
+                        db.SaveChanges();
                     }
                     examresultopic.score = score;
                     examresultopic.wrongs = wrongsum;
