@@ -20,6 +20,7 @@ namespace FP_wab.Models
         public DateTime endtime { get; set; }
         public int repeats { get; set; }
         public string title { get; set; }
+        public string description { get; set; }
     }
 
     public class QuestionResModel

@@ -30,9 +30,52 @@ namespace FP_wab.Controllers
         /// 创建examinfo
         /// </summary>
         /// <param name="request"></param>
-        public void CreatePaper(PaperResModel request)
+        public ActionResult CreatePaper(PaperResModel request)
         {
-
+            FP_Exam_ExamInfo examinfo = new FP_Exam_ExamInfo();
+            examinfo.departid = null;
+            examinfo.uid = request.uid;
+            examinfo.channelid = request.channalid;
+            examinfo.sortid = request.sortid;
+            examinfo.typelist = "";
+            examinfo.name = request.name;
+            examinfo.type = 1;
+            examinfo.total = request.total;
+            examinfo.passmark = request.passmark;
+            examinfo.examtime = request.examtime;
+            examinfo.islimit = request.islimit?1:0;
+            examinfo.starttime = request.startime;
+            examinfo.endtime = request.endtime;
+            examinfo.repeats = request.repeats;
+            examinfo.showanswer = 1;
+            examinfo.allowdelete = 0;
+            examinfo.display = 0;
+            examinfo.postdatetime = DateTime.Now;
+            examinfo.examtype = 0;
+            examinfo.examroles = "";
+            //部门（暂时不设置）
+            examinfo.examdeparts = "";
+            examinfo.examuser = "";
+            examinfo.credits = 0;
+            examinfo.exams = 0;
+            examinfo.score = 0;
+            examinfo.views = 0;
+            examinfo.questions = 0;
+            examinfo.status = 1;
+            examinfo.papers = 1;
+            examinfo.title = examinfo.name;
+            examinfo.address = "";
+            examinfo.opentime = "";
+            examinfo.description = request.description;
+            examinfo.content = "";
+            examinfo.iscopy = 0;
+            examinfo.isvideo = 0;
+            examinfo.iswitch = 1;
+            examinfo.issign = 0;
+            examinfo.client = "{\"pc\":\"1\",\"mobile\":\"1\"}";
+            examinfo.papertype = 0;
+            int result = CreateExamHelp.CreateExamInfo(examinfo);
+            return Json(new { Status = result, Content = result == 1 ? "创建成功" : "创建失败" });
         }
 
         /// <summary>
@@ -50,6 +93,12 @@ namespace FP_wab.Controllers
             }
         }
 
+        /// <summary>
+        /// 上传excel并从其中导入题目
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="sortid"></param>
+        /// <returns></returns>
         public ActionResult UploadQuestionXls(HttpPostedFileBase file,int sortid)
         {
             var uid = 1;
