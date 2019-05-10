@@ -276,7 +276,7 @@ namespace FP_wab.Controllers
                 else
                 {
                     //跳转至考试界面
-                    return Json(new { Status = 0, url = "/Error/Index" });
+                    return Json(new { Status = 0, url = "/Announce/Index?content=考试创建失败&buttonContent=返回首页&type=2&backUrl=" + ExamingHelp.domainPath + "/Exam/Index" });
                 }
             }
             else

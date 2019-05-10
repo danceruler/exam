@@ -12,11 +12,7 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            var t = ExcelHelp.InputFromExcel("D:\\周报\\test.xlsx","sheet1");
-            foreach(DataRow row in t.Rows)
-            {
-                var a = row["list1"].ToString();
-            }
+            var t = QuestionHelp.DeleteQuestion(411);
         }
     }
 }

@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<input type="file" name="file" id="uploadfile" /><br />
+<input type="text" id="sortid" name="sortid" value="11" style="display:none" />
+<input type="submit" value="提交" onclick="upload()" />
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    function upload() {
+        var file = document.getElementById('uploadfile').files[0];
+        var sortid = document.getElementById('sortid').value;
+        var form = new FormData();
+        form.append("sortid", sortid);
+        form.append("file", file);
+        $.ajax({
+            url: "/Manger/UploadQuestionXls",
+            type: "post",
+            data: form,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                alert(data.Content);
+            }
+        });
+    }
+</script>
+
+

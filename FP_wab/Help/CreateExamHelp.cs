@@ -186,6 +186,22 @@ namespace FP_wab.Help
             return result;
         }
         
+        /// <summary>
+        /// 创建新的ExamInfo
+        /// </summary>
+        public static int CreateExamInfo(FP_Exam_ExamInfo examinfo)
+        {
+            try
+            {
+                db.FP_Exam_ExamInfo.Add(examinfo);
+                db.SaveChanges();
+                return 1;
+            }catch(Exception e)
+            {
+                return 0;
+            }
+            
+        }
 
         /// <summary>
         /// 随机排列数组元素

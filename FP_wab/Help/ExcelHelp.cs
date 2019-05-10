@@ -6,12 +6,16 @@ using System.Data;
 using System.Data.OleDb;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 
 namespace FP_wab.Help
 {
     public class ExcelHelp
     {
+
+        public static string[] optionList = new string[] { "A", "B", "C", "D", "E", "F", "G", "H"}; 
+
         /// <summary>
         /// 获取Excel文件数据表列表
         /// </summary>
@@ -21,7 +25,7 @@ namespace FP_wab.Help
             ArrayList TablesList = new ArrayList();
             if (File.Exists(ExcelFileName))
             {
-                using (OleDbConnection conn = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Extended Properties=Excel 8.0;Data Source=" + ExcelFileName))
+                using (OleDbConnection conn = new OleDbConnection("Provider=Microsoft.Ace.OleDb.12.0;Extended Properties='Excel 12.0; HDR=Yes; IMEX=1';Data Source=" + ExcelFileName))
                 {
                     try
                     {
@@ -70,7 +74,7 @@ namespace FP_wab.Help
             }
 
             DataTable table = new DataTable();
-            OleDbConnection dbcon = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + ExcelFilePath + ";Extended Properties=Excel 8.0");
+            OleDbConnection dbcon = new OleDbConnection(@"Provider=Microsoft.Ace.OleDb.12.0;Data Source=" + ExcelFilePath + ";Extended Properties='Excel 12.0; HDR=Yes; IMEX=1'");
             OleDbCommand cmd = new OleDbCommand("select * from [" + TableName + "$]", dbcon);
             OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
 
@@ -95,5 +99,6 @@ namespace FP_wab.Help
             }
             return table;
         }
+
     }
 }
